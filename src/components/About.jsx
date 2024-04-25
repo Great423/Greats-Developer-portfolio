@@ -1,8 +1,6 @@
 import React from 'react';
 // icons
-import { FaChevronLeft } from "react-icons/fa";
-import { FaChevronRight } from "react-icons/fa";
-import { FaSlash } from 'react-icons/fa';
+import { FaChevronLeft, FaChevronRight, FaSlash } from "react-icons/fa";
 // intersection observer
 import {useInView} from 'react-intersection-observer';
 // counter
@@ -11,8 +9,6 @@ import CountUp from 'react-countup';
 import { motion } from 'framer-motion';
 // fade In
 import { fadeIn } from '../variants';
-// react scroll
-import { Link } from 'react-scroll';
 
 const About = () => {
   const [ref, inView] = useInView({

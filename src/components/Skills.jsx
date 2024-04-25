@@ -1,15 +1,9 @@
 import React from "react";
 // icons
-import { FaChevronLeft } from "react-icons/fa";
-import { FaChevronRight } from "react-icons/fa";
-import { FaSlash } from 'react-icons/fa';
-// Skills logo icon
-import { FaReact, FaHtml5, FaCss3 } from "react-icons/fa";
-import { FaBootstrap } from "react-icons/fa";
+import { FaChevronLeft, FaChevronRight, FaSlash, FaReact, FaHtml5, FaCss3, FaBootstrap } from "react-icons/fa";
 import { IoLogoJavascript } from "react-icons/io5";
 import { TbBrandNextjs } from "react-icons/tb";
-import { BiLogoTailwindCss } from "react-icons/bi";
-import { BiLogoJquery } from "react-icons/bi";
+import { BiLogoTailwindCss, BiLogoJquery } from "react-icons/bi";
 
 export default function Skills() {
   return (

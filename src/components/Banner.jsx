@@ -2,9 +2,7 @@ import React from 'react';
 // images 
 import Great from '../assets/about2.png';
 // social media icons 
-import { FaTwitter } from 'react-icons/fa';
-import { FaYoutube } from "react-icons/fa";
-import { FaGithub } from "react-icons/fa";
+import { FaTwitter, FaFacebook, FaGithub, FaWhatsapp  } from 'react-icons/fa';
 // react scroll
 import { Link } from 'react-scroll';
 // type animation 
@@ -29,7 +27,7 @@ const Banner = () => {
           whileInView={'show'}
           viewport={{once: true, amount: 0.7}} className="lg:hidden -mt-24 relative">
           <div className="animate-spin" style={{ animationDuration: '20s' }}>
-            { isMobile && <CurvedText /> }
+            { isMobile && <CurvedText text='Onyenokwe Great Chukwuka. Frontend Dev. Designer._'/> }
           </div>
           <span className='absolute btn p-1 bg-[#C00ACA] top-1/2 -translate-y-1/2 left-1/2 -translate-x-1/2'>
             <img src={Great} className='rounded-full h-24 w-24' alt="" />
@@ -100,13 +98,16 @@ const Banner = () => {
             whileInView={'show'}
             viewport={{once: false, amount: 0.7}}
              className='flex text-[20px] gap-6 max-w-max mx-auto lg:mx-0'>
-              <a href="#">
-                <FaYoutube />
+              <a href="https://web.facebook.com/chukwuka.onyenokwe" className="hover:scale-150 transition-all">
+                <FaFacebook />
               </a>
-              <a href="#">
+              <a href="https://github.com/Great423/" className="hover:scale-150 transition-all">
                 <FaGithub />
               </a>
-              <a href="#">
+              <a href="https://wa.me/2349124160236" className="hover:scale-150 transition-all">
+                <FaWhatsapp />
+              </a>
+              <a href="https://twitter.com/OnyenokweC" className="hover:scale-150 transition-all">
                 <FaTwitter />
               </a>
             </motion.div>

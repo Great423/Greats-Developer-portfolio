@@ -4,14 +4,7 @@ import { Link as RouteLink } from 'react-router-dom';
 // json data
 import projectsData from '../data/Data.json';
 // icons
-import { FaChevronLeft } from "react-icons/fa";
-import { FaChevronRight } from "react-icons/fa";
-import { FaSlash } from 'react-icons/fa';
-import { FaArrowRight } from "react-icons/fa6";
-// framer motion
-// import { motion } from 'framer-motion';
-// fade In
-// import { fadeIn } from '../variants';
+import { FaChevronLeft, FaChevronRight, FaSlash, FaArrowRight } from "react-icons/fa";
 
 export default function Work() {
   return (

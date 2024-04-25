@@ -12,9 +12,6 @@ import { Link as BackLink } from 'react-scroll';
 import { Splide, SplideSlide } from '@splidejs/react-splide';
  // Splide CSS
 import '@splidejs/splide/dist/css/themes/splide-default.min.css';
-// images
-import img2 from '../assets/portfolio-img2.png'
-import img3 from '../assets/portfolio-img3.png'
 
 function ProjectInfo() {
   const { id } = useParams();
@@ -63,10 +60,10 @@ function ProjectInfo() {
               <img src={image} className="h-full w-full object-cover" alt="Image 1"/>
             </SplideSlide>
             <SplideSlide>
-              <img src={img2} className="h-full w-full object-cover" alt="Image 2"/>
+              <img src={image} className="h-full w-full object-cover" alt="Image 2"/>
             </SplideSlide>
             <SplideSlide>
-              <img src={img3} className="h-full w-full object-cover" alt="Image 3"/>
+              <img src={image} className="h-full w-full object-cover" alt="Image 3"/>
             </SplideSlide>
           </Splide>
         </div>

@@ -1,13 +1,13 @@
 import React from "react";
 // react icons
 import { BiHomeAlt, BiUser } from 'react-icons/bi';
-import { BsClipboardData, BsBriefcase, BsChatSquare, BsChatSquareText } from 'react-icons/bs';
+import { BsClipboardData, BsBriefcase, BsChatSquareText } from 'react-icons/bs';
 // react scroll
 import { Link } from 'react-scroll';
 
 export default function Nav() {
   return (
-    <nav className="w-full z-[100] overflow-hidden fixed left-1/2 -translate-x-1/2 bottom-2 lg:bottom-8">
+    <nav className="w-full max-w-[460px] z-[100] overflow-hidden fixed left-1/2 -translate-x-1/2 bottom-2 lg:bottom-8">
       <div className="container mx-auto px-4">
         <ul className="w-full text-white/50 text-lg md:text-2xl bg-black/20 mx-auto px-3 py-3 md:px-5 md:py-4 max-w-[460px] backdrop-blur-2xl rounded-full flex justify-between items-center gap-4">
           <Link

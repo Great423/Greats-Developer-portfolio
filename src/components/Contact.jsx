@@ -1,9 +1,7 @@
 import React from 'react'
 // icons
 import { BsArrowUpRight } from 'react-icons/bs';
-import { FaChevronLeft } from "react-icons/fa";
-import { FaChevronRight } from "react-icons/fa";
-import { FaSlash } from 'react-icons/fa';
+import { FaChevronLeft, FaChevronRight, FaSlash } from "react-icons/fa";
 // framer motion
 import { motion } from 'framer-motion';
 // fade In

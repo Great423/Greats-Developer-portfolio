@@ -1,10 +1,6 @@
 import React from "react";
 // icons
-import { FaCode } from "react-icons/fa";
-import { FaChevronLeft } from "react-icons/fa";
-import { FaChevronRight } from "react-icons/fa";
-import { FaSlash } from 'react-icons/fa';
-import { FaPaintBrush } from "react-icons/fa";
+import { FaCode, FaChevronLeft, FaChevronRight, FaSlash, FaPaintBrush } from "react-icons/fa";
 import { MdManageAccounts } from "react-icons/md";
 // framer motion
 import { motion } from 'framer-motion';

@@ -1,8 +1,4 @@
 import React from "react";
-// icons
-import { FaChevronLeft } from "react-icons/fa";
-import { FaChevronRight } from "react-icons/fa";
-import { FaSlash } from 'react-icons/fa';
 // react router link
 import { Link as RouteLink } from 'react-router-dom';
 // react scroll link
