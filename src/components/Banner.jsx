@@ -15,6 +15,8 @@ import { fadeIn } from '../variants';
 import CurvedText from './CurvedText';
 // custom hooks
 import useMediaQuery from '../hooks/useMediaQuery';
+// components
+import Button from './Button';
 
 const Banner = () => {
   const isMobile = useMediaQuery('(max-width: 959px)')
@@ -83,12 +85,9 @@ const Banner = () => {
               whileInView={'show'}
               viewport={{once: false, amount: 0.7}}
              className='flex max-w-max gap-6 items-center mx-auto lg:mx-0'>
-              <Link
-              to="contact"
-              activeClass="active"
-              smooth={true}
-              spy={true} 
-               className='btn px-4 py-2'>Contact me</Link>
+              <Link to="contact" activeClass="active" smooth={true} spy={true} capture>
+                <Button text={'Contact me'} className='btn px-4 py-2' />
+              </Link>
               <a href="#" className='text-gradient btn-link'>My resume</a>
             </motion.div>
             {/* socials */}

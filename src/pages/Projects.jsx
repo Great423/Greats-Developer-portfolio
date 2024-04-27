@@ -9,6 +9,8 @@ import { IoIosArrowUp } from "react-icons/io";
 import { Link as BackLink } from 'react-scroll';
 // react router
 import { Link as Link } from 'react-router-dom';
+// components
+import Button from '../components/Button';
 
 export default function Projects() {
   useEffect(() => {
@@ -34,14 +36,12 @@ export default function Projects() {
                     {/* overlay */}
                     <div className="md:group-hover:bg-black/50 md:bg-black/30 bg-black/30 w-full h-full absolute z-40 transition-all duration-300"></div>
                     {/* img */}
-                    <img loading="lazy" src={`/src/assets/${image}`} className="md:group-hover:scale-125 transition-all duration-500 object-cover h-[300px] w-full" alt={title} />  
+                    <img src={`/assets/${image}`} className="md:group-hover:scale-125 transition-all duration-500 object-cover h-[300px] w-full" alt={title} />  
                   </div>
                   <div className="p-4 flex items-center justify-between">
                     {/* title */}
                     <p className="text-gradient text-[15px] md:text-base">{title}</p>
-                    <button className="font-primary hover:bg-gradient-to-r to-[#FF56F6] via-[#b936ee] from-[#406aff] border border-white/50 text-white/50 text-[9.5px] md:text-xs rounded-full px-2 py-0.5 md:px-4 md:py-2 flex items-center gap-2">
-                      View Details<FaArrowRight />
-                    </button>
+                    <Button text={'View Details'} icon={FaArrowRight} className="font-primary hover:bg-gradient-to-r to-[#FF56F6] via-[#b936ee] from-[#406aff] border border-white/50 text-white/50 text-[9.5px] md:text-xs rounded-full px-2 py-0.5 md:px-4 md:py-2 flex items-center gap-2" />
                   </div>
                 </Link>
               )

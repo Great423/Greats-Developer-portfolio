@@ -1,13 +1,32 @@
-import React from 'react'
+import React, { useRef } from 'react';
+// emailJS
+import emailjs from '@emailjs/browser';
 // icons
-import { BsArrowUpRight } from 'react-icons/bs';
 import { FaChevronLeft, FaChevronRight, FaSlash } from "react-icons/fa";
 // framer motion
 import { motion } from 'framer-motion';
 // fade In
 import { fadeIn } from '../variants';
+// components
+import Button from './Button';
 
 const Contact = () => {
+  const form = useRef();
+
+  const sendEmail = (e) => {
+    e.preventDefault();
+
+    emailjs.sendForm('service_0u3blq8', 'template_o39t5hp', form.current, {
+        publicKey: '9BVJWOTFoUTVqQNr-',
+      }) 
+      .then(() => {
+          console.log('SUCCESS!');
+        }, 
+        (error) => {
+          console.log('FAILED...', error.text);
+        },
+      );
+  };
   return (
     <section id='contact' className="section">
       <div className="container mx-auto">
@@ -25,21 +44,29 @@ const Contact = () => {
           </motion.div>
           {/* form */}
           <motion.form
+          onSubmit={sendEmail}
           variants={fadeIn('left', 0.1)}
           initial='hidden'
           whileInView={'show'}
-          
-           className='flex-1 border rounded-2xl flex flex-col gap-y-6 pb-24 p-6 items-start'>
-            <input type="text"
+           className='flex-1 border rounded-2xl flex flex-col gap-y-6 p-6 items-start'>
+            <input
+              type="text"
+              name="name"
               placeholder='Your name'
-              className='bg-transparent border-b py-3 outline-none w-full placeholder:text-white focus:border-accent transition-all' />
-            <input type="text"
+              className='bg-transparent border-b py-3 outline-none w-full placeholder:text-white focus:border-accent transition-all'
+            />
+            <input
+              type="email"
+              name="email"
               placeholder='Your email'
-              className='bg-transparent border-b py-3 outline-none w-full placeholder:text-white focus:border-accent transition-all' />
-            <textarea type="text"
+              className='bg-transparent border-b py-3 outline-none w-full placeholder:text-white focus:border-accent transition-all'
+            />
+            <textarea
+              name="message"
               placeholder='Your message'
-              className='bg-transparent border-b py-12 outline-none w-full placeholder:text-white focus:border-accent transition-all resize-none mb-12' />
-            <button className='btn btn-lg'>Send message</button>
+              className='bg-transparent border-b py-12 outline-none w-full placeholder:text-white focus:border-accent transition-all resize-none mb-12'
+            />
+            <Button type='submit' text={'Send message'} className='btn btn-lg' />
           </motion.form>
         </div>
       </div>

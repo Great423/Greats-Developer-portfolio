@@ -12,6 +12,8 @@ import { Link as BackLink } from 'react-scroll';
 import { Splide, SplideSlide } from '@splidejs/react-splide';
  // Splide CSS
 import '@splidejs/splide/dist/css/themes/splide-default.min.css';
+// components
+import Button from '../components/Button';
 
 function ProjectInfo() {
   const { id } = useParams();
@@ -32,11 +34,7 @@ function ProjectInfo() {
           {/* summary of what it was built on */}
           <p>This page contains the case study of {title} Open-Source Project which includes the Project Overview,
             Tool Used and Live Links to the official product.</p>
-          <button className="btn btn-sm flex items-center gap-1">
-            <FaLink className="text-lg"/>
-            {linkStatus}
-          </button>
-          {/* <img src={selectedProject.image} className="h-[12rem] md:h-[20rem] w-full object-cover" alt="" /> */}
+          <Button text={linkStatus} icon={FaLink} iconStyle className="btn btn-sm flex items-center gap-1" />
           <Splide 
             aria-label="My Favorite Images"
             style={{
@@ -57,13 +55,13 @@ function ProjectInfo() {
             }}
           >
             <SplideSlide>
-              <img src={`/src/assets/${image}`} className="h-full w-full object-cover" alt="Image 1"/>
+              <img src={`/assets/${image}`} className="h-full w-full object-cover" alt="Image 1"/>
             </SplideSlide>
             <SplideSlide>
-              <img src={`/src/assets/${image}`} className="h-full w-full object-cover" alt="Image 2"/>
+              <img src={`/assets/${image}`} className="h-full w-full object-cover" alt="Image 2"/>
             </SplideSlide>
             <SplideSlide>
-              <img src={`/src/assets/${image}`} className="h-full w-full object-cover" alt="Image 3"/>
+              <img src={`/assets/${image}`} className="h-full w-full object-cover" alt="Image 3"/>
             </SplideSlide>
           </Splide>
         </div>

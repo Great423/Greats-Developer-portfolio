@@ -8,6 +8,8 @@ import { motion } from 'framer-motion';
 import { fadeIn } from '../variants';
 // react scroll link
 import { Link } from 'react-scroll';
+// components
+import Button from './Button';
 
 export default function Services() {
   // services data
@@ -51,11 +53,12 @@ const services = [
               I'm a Freelance Front-end Developer with over 5 years of experience
             </motion.h3>
             <Link to="work">
-              <motion.button
+              <motion.div
               variants={fadeIn('left', 0.3)}
               initial='hidden'
-              whileInView={'show'}
-              className="btn btn-sm">See my work</motion.button>
+              whileInView={'show'}>
+                <Button text={'See my work'} className='btn btn-sm'/>
+              </motion.div>
             </Link>
           </div>
           <hr className="border-[#785bac] md:hidden"/>

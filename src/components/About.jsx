@@ -9,6 +9,8 @@ import CountUp from 'react-countup';
 import { motion } from 'framer-motion';
 // fade In
 import { fadeIn } from '../variants';
+// components
+import Button from './Button';
 
 const About = () => {
   const [ref, inView] = useInView({
@@ -99,7 +101,7 @@ const About = () => {
             initial='hidden'
             whileInView={'show'}
              className='flex gap-8 items-center'>
-              <button className='btn btn-lg'><a href="#">Resume</a></button>
+              <Button text={'Resume'} className='btn btn-lg'/>
             </motion.div>
           </div>
         </div>
