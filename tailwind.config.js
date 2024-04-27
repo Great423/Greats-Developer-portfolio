@@ -33,9 +33,9 @@ export default {
         'frame': '0px 4.42184px 107.23px rgba(255, 86, 246, 0.51);' ,
       },
       backgroundImage: {
-        site: "url('./assets/site-bg.jpg')",
-        about: "url('./assets/working.jpg')",
-        services: "url('./assets/services.png')",
+        site: "url('/assets/site-bg.jpg')",
+        about: "url('/assets/working.jpg')",
+        services: "url('/assets/services.png')",
       },
     },
   },
