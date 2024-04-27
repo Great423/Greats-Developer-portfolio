@@ -1,6 +1,6 @@
 import React from 'react';
 // images 
-import Great from '../assets/about2.png';
+import Great from '/assets/about2.png';
 // social media icons 
 import { FaTwitter, FaFacebook, FaGithub, FaWhatsapp  } from 'react-icons/fa';
 // react scroll
