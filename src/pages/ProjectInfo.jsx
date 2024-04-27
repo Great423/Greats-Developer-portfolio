@@ -57,13 +57,13 @@ function ProjectInfo() {
             }}
           >
             <SplideSlide>
-              <img src={image} className="h-full w-full object-cover" alt="Image 1"/>
+              <img src={`/src/assets/${image}`} className="h-full w-full object-cover" alt="Image 1"/>
             </SplideSlide>
             <SplideSlide>
-              <img src={image} className="h-full w-full object-cover" alt="Image 2"/>
+              <img src={`/src/assets/${image}`} className="h-full w-full object-cover" alt="Image 2"/>
             </SplideSlide>
             <SplideSlide>
-              <img src={image} className="h-full w-full object-cover" alt="Image 3"/>
+              <img src={`/src/assets/${image}`} className="h-full w-full object-cover" alt="Image 3"/>
             </SplideSlide>
           </Splide>
         </div>

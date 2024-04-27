@@ -34,7 +34,7 @@ export default function Projects() {
                     {/* overlay */}
                     <div className="md:group-hover:bg-black/50 md:bg-black/30 bg-black/30 w-full h-full absolute z-40 transition-all duration-300"></div>
                     {/* img */}
-                    <img loading="lazy" src={image} className="md:group-hover:scale-125 transition-all duration-500 object-cover h-[300px] w-full" alt={title} />  
+                    <img loading="lazy" src={`/src/assets/${image}`} className="md:group-hover:scale-125 transition-all duration-500 object-cover h-[300px] w-full" alt={title} />  
                   </div>
                   <div className="p-4 flex items-center justify-between">
                     {/* title */}
