@@ -41,7 +41,7 @@ export default function Work() {
                   {/* overlay */}
                   <div className="bg-black/70 lg:bg-transparent lg:group-hover:bg-black/70 w-full h-full absolute z-40 transition-all duration-300"></div>
                   {/* img */}
-                  <img src={`/src/assets/${image}`} className="lg:group-hover:scale-125 transition-all duration-500 object-cover h-[324px] w-full" alt="" />
+                  <img src={image} className="lg:group-hover:scale-125 transition-all duration-500 object-cover h-[324px] w-full" alt="" />
                   {/* pretitle */}
                   <div className="absolute bottom-24 lg:-bottom-full left-2 md:left-12 lg:group-hover:bottom-28 transition-all duration-500 z-50">
                     <span className="text-gradient text-sm md:text-base">{preTitle}</span>
