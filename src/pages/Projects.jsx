@@ -32,9 +32,9 @@ export default function Projects() {
                 <Link to={`/project-info/${index}`} key={index} target="_blank" className="shadow-xl">
                   <div className="group relative overflow-hidden">
                     {/* preTitle */}
-                    <span className="absolute top-4 left-4 text-xs z-[100] rounded-full bg-black/80 px-4 py-1">{preTitle}</span>
+                    <span className="absolute top-4 left-4 text-xs z-[100] rounded-full bg-black/90 px-4 py-1">{preTitle}</span>
                     {/* overlay */}
-                    <div className="md:group-hover:bg-black/50 md:bg-black/30 bg-black/30 w-full h-full absolute z-40 transition-all duration-300"></div>
+                    <div className="md:group-hover:bg-black/50 md:bg-black/20 bg-black/10 w-full h-full absolute z-40 transition-all duration-300"></div>
                     {/* img */}
                     <img src={`/assets/${image}`} className="md:group-hover:scale-125 transition-all duration-500 object-cover h-[300px] w-full" alt={title} />  
                   </div>

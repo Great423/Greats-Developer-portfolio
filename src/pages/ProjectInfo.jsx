@@ -19,7 +19,7 @@ function ProjectInfo() {
   const { id } = useParams();
   const selectedProject = data.find((item, index) => index === parseInt(id));
 
-  const {title, image, description, tools, linkStatus} = selectedProject;
+  const {title, image, description, tools, linkStatus, website} = selectedProject;
 
   if(!selectedProject) {
     return (
@@ -34,7 +34,9 @@ function ProjectInfo() {
           {/* summary of what it was built on */}
           <p>This page contains the case study of {title} Open-Source Project which includes the Project Overview,
             Tool Used and Live Links to the official product.</p>
-          <Button text={linkStatus} icon={FaLink} iconStyle className="btn btn-sm flex items-center gap-1" />
+          <a href={website} className="inline-block">
+            <Button text={linkStatus} icon={FaLink} websiteIcon className="btn btn-sm flex flex-row-reverse items-center gap-1" />
+          </a>
           <Splide 
             aria-label="My Favorite Images"
             style={{

@@ -11,14 +11,14 @@ import Nav from '../components/Nav';
 import Banner from '../components/Banner';
 const Home = () => {
   return (
-    <div>
-      <Nav />
-      <Banner />
-      <About />
-      <Skills />
-      <Services />
-      <Work />
-    </div>
+      <>
+        <Nav />
+        <Banner />
+        <About />
+        <Skills />
+        <Services />
+        <Work />
+      </>
   );
 };
 

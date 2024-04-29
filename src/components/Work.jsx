@@ -27,12 +27,9 @@ export default function Work() {
             Click on each project to discover more about its purpose, features, and the 
             frontend technologies utilized to bring it to life.
             </p>
-            <div
-            >
-              <RouteLink to="/projects" target="_blank">
-                <Button text={'View all projects'} className="btn btn-sm" />
-              </RouteLink>
-            </div>
+            <RouteLink to="/projects" target="_blank">
+              <Button text={'View all projects'} className="btn btn-sm" />
+            </RouteLink>
           </div>
           {/* image */}
           {projectsData && projectsData.slice(0, 3).map((project, index) => {

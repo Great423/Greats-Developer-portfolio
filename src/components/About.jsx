@@ -37,8 +37,8 @@ const About = () => {
             variants={fadeIn('left', 0.2)}
             initial='hidden'
             whileInView={'show'}
-            className='h3 mb-4'>
-              Hi there! 👋
+            className='h3 mb-4 flex gap-2'>
+              Hi there! <span className='animate-waveHand origin-[70%_70%]'>👋</span>
             </motion.h3>
             <motion.p
             variants={fadeIn('left', 0.3)}
@@ -56,7 +56,7 @@ const About = () => {
               Beyond coding, I bring a strong background in management and leadership, rounding out my capabilities 
               to not only deliver exceptional projects but to also collaborate effectively within a team. 
               <br />
-              I'm also passionate about music and playing chess and I'm always curious to learn more when it comes to new technologies and creative coding. 
+              I'm also passionate about music and playing games and I'm always curious to learn more when it comes to new technologies and creative coding. 
               <br />
             </motion.p>
             {/* stats */}

@@ -42,8 +42,9 @@ const Banner = () => {
               variants={fadeIn('up', 0.1)}
               initial='hidden'
               whileInView={'show'}
-              viewport={{once: true, amount: 0.7}} className='lg:text-xl font-secondary font-semibold uppercase leading-[1] flex items-center justify-center lg:justify-start'>
-                {`{ Hello, world! 👋, I'm }`}
+              viewport={{once: true, amount: 0.7}}
+              className='lg:text-xl font-secondary font-semibold uppercase leading-[1] flex items-center justify-center lg:justify-start'>
+                Hello, world! <span className='animate-waveHand origin-[70%_70%]'>👋</span>, I'm
             </motion.span>
             <motion.h1
               variants={fadeIn('up', 0.2)}
@@ -95,7 +96,7 @@ const Banner = () => {
             variants={fadeIn('up', 0.6)}
             initial='hidden'
             whileInView={'show'}
-            viewport={{once: false, amount: 0.7}}
+            // viewport={{once: false, amount: 0.7}}
              className='flex text-[20px] gap-6 max-w-max mx-auto lg:mx-0'>
               <a href="https://web.facebook.com/chukwuka.onyenokwe" className="hover:scale-150 transition-all">
                 <FaFacebook />
