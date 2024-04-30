@@ -101,7 +101,9 @@ const About = () => {
             initial='hidden'
             whileInView={'show'}
              className='flex gap-8 items-center'>
-              <Button text={'Resume'} className='btn btn-lg'/>
+              <a href="/resume.pdf" target='_blank' rel='noopener noreferrer'>
+                <Button text={'Resume'} className='btn btn-lg'/> 
+              </a>
             </motion.div>
           </div>
         </div>

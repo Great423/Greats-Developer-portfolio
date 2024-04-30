@@ -89,7 +89,7 @@ const Banner = () => {
               <Link to="contact" activeClass="active" smooth={true} spy={true} capture>
                 <Button text={'Contact me'} className='btn px-4 py-2' />
               </Link>
-              <a href="#" className='text-gradient btn-link'>My resume</a>
+              <a href="/resume.pdf" target='_blank' rel='noopener noreferrer' className='text-gradient btn-link'>My resume</a>
             </motion.div>
             {/* socials */}
             <motion.div
