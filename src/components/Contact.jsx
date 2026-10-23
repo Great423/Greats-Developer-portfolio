@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react';
+import { useRef, useState } from 'react';
 import emailjs from '@emailjs/browser';
 import { FaChevronLeft, FaChevronRight, FaSlash } from "react-icons/fa";
 import { motion } from 'framer-motion';
@@ -53,7 +53,7 @@ const Contact = () => {
               <FaChevronLeft />{`Get in touch`}<FaSlash className="rotate-90" /><FaChevronRight />
             </h4>
             <h2 className='text-[45px] lg:text-[90px] leading-none'>
-              Let's work <br /> together!
+              Let&apos;s work <br /> together!
             </h2>
           </motion.div>
           <motion.form

@@ -1,4 +1,4 @@
-import React from "react";
+/* eslint-disable react/prop-types */
 import { MdOutlineDangerous } from "react-icons/md";
 
 const Button = ({type, text, className, websiteIcon, icon: IconComponent}) => {

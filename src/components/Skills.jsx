@@ -1,4 +1,3 @@
-import React from "react";
 // icons
 import { FaChevronLeft, FaChevronRight, FaSlash, FaReact, FaHtml5, FaCss3, FaBootstrap } from "react-icons/fa";
 import { IoLogoJavascript } from "react-icons/io5";

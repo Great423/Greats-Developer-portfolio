@@ -1,4 +1,3 @@
-import React from "react";
 // react icons
 import { BiHomeAlt, BiUser } from 'react-icons/bi';
 import { BsClipboardData, BsBriefcase, BsChatSquareText } from 'react-icons/bs';

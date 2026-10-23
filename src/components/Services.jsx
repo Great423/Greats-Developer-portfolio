@@ -1,4 +1,3 @@
-import React from "react";
 // icons
 import { FaCode, FaChevronLeft, FaChevronRight, FaSlash, FaPaintBrush } from "react-icons/fa";
 import { MdManageAccounts } from "react-icons/md";
@@ -50,7 +49,7 @@ const services = [
             initial='hidden'
             whileInView={'show'}
              className="h3 max-w-[455px] mb-6">
-              I'm a Freelance Front-end Developer with over 5 years of experience
+              I&apos;m a Freelance Front-end Developer with over 5 years of experience
             </motion.h3>
             <Link to="work">
               <motion.div

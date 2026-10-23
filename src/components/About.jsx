@@ -1,4 +1,3 @@
-import React from 'react';
 // icons
 import { FaChevronLeft, FaChevronRight, FaSlash } from "react-icons/fa";
 // intersection observer
@@ -56,7 +55,7 @@ const About = () => {
               Beyond coding, I bring a strong background in management and leadership, rounding out my capabilities 
               to not only deliver exceptional projects but to also collaborate effectively within a team. 
               <br />
-              I'm also passionate about music and playing games and I'm always curious to learn more when it comes to new technologies and creative coding. 
+              I&apos;m also passionate about music and playing games and I&apos;m always curious to learn more when it comes to new technologies and creative coding. 
               <br />
             </motion.p>
             {/* stats */}
@@ -101,8 +100,8 @@ const About = () => {
             initial='hidden'
             whileInView={'show'}
              className='flex gap-8 items-center'>
-              <a href="/resume.pdf" target='_blank' rel='noopener noreferrer'>
-                <Button text={'Resume'} className='btn btn-lg'/> 
+              <a href="/Great-Onyenokwe-CV.pdf" download>
+                <Button text={'Download CV'} className='btn btn-lg'/> 
               </a>
             </motion.div>
           </div>

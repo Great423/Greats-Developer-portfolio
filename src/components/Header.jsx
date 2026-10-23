@@ -1,4 +1,3 @@
-import React from "react";
 // react router link
 import { Link as RouteLink } from 'react-router-dom';
 // react scroll link
