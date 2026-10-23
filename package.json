@@ -3,6 +3,9 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
+  "engines": {
+    "node": "24.x"
+  },
   "scripts": {
     "uninstall-cdns": "npm uninstall @splidejs/react-splide circletype react-countup react-dom react-icons react-intersection-observer react-router-dom react-scroll react-type-animation",
     "dev": "vite",
