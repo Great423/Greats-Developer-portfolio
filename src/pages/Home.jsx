@@ -1,4 +1,4 @@
-import React, { lazy } from 'react';
+import { lazy } from 'react';
 
 // Lazy-loaded components
 const About = lazy(() => import('../components/About'));

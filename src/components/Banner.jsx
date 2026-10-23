@@ -1,4 +1,3 @@
-import React from 'react';
 // images 
 import Great from '/assets/about2.png';
 // social media icons 
@@ -44,7 +43,7 @@ const Banner = () => {
               whileInView={'show'}
               viewport={{once: true, amount: 0.7}}
               className='lg:text-xl font-secondary font-semibold uppercase leading-[1] flex items-center justify-center lg:justify-start'>
-                Hello, world! <span className='animate-waveHand origin-[70%_70%]'>👋</span>, I'm
+                Hello, world! <span className='animate-waveHand origin-[70%_70%]'>👋</span>, I&apos;m
             </motion.span>
             <motion.h1
               variants={fadeIn('up', 0.2)}
@@ -78,7 +77,7 @@ const Banner = () => {
               whileInView={'show'}
               viewport={{once: false, amount: 0.7}}
              className='max-w-lg mx-auto lg:mx-0'>
-              Got the skills to build anything from business sites to interactive web apps. Need a web presence or hiring? Let's talk!
+              Got the skills to build anything from business sites to interactive web apps. Need a web presence or hiring? Let&apos;s talk!
             </motion.p>
             <motion.div
               variants={fadeIn('up', 0.5)}
@@ -89,7 +88,13 @@ const Banner = () => {
               <Link to="contact" activeClass="active" smooth={true} spy={true} capture>
                 <Button text={'Contact me'} className='btn px-4 py-2' />
               </Link>
-              <a href="/resume.pdf" target='_blank' rel='noopener noreferrer' className='text-gradient btn-link'>My resume</a>
+              <a
+                href="/Great-Onyenokwe-CV.pdf"
+                download
+                className="inline-flex items-center justify-center rounded-full border border-white/30 bg-white/5 px-4 py-2.5 font-primary text-xs uppercase tracking-[0.12em] text-white transition hover:border-white/60 hover:bg-white/10 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#FF56F6]/70"
+              >
+                Download CV
+              </a>
             </motion.div>
             {/* socials */}
             <motion.div

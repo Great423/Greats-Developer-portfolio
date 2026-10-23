@@ -1,13 +1,12 @@
-import React from "react";
 // react router link
 import { Link as RouteLink } from 'react-router-dom';
-// json data
-import projectsData from '../data/Data.json';
+// project data
+import { featuredProjects } from '../data/projects';
 // components
 import Button from './Button';
 import WorkCard from './WorkCard';
 // icons
-import { FaChevronLeft, FaChevronRight, FaSlash, FaArrowRight } from "react-icons/fa";
+import { FaChevronLeft, FaChevronRight, FaSlash } from "react-icons/fa";
 
 export default function Work() {
   return (
@@ -31,14 +30,10 @@ export default function Work() {
               <Button text={'View all projects'} className="btn btn-sm" />
             </RouteLink>
           </div>
-          {/* image */}
-          {projectsData && projectsData.slice(0, 3).map((project, index) => {
-            return (
-              <RouteLink to={`/project-info/${index}`} key={index} target="_blank" className="shadow-xl">
-                <WorkCard project={project} icon={FaArrowRight} />
-              </RouteLink>
-            )
-          })}
+          {/* featured projects */}
+          {featuredProjects.map((project) => (
+            <WorkCard key={project.slug} project={project} />
+          ))}
         </div>
       </div>
     </section>
