@@ -43,10 +43,10 @@ export const projects = [
     slug: "index-consulting",
     role: "Frontend Developer",
     description:
-      "A full website rebuild for Index Consulting, delivered as a responsive client site.",
+      "Website rebuild for Index Consulting; the updated site is not published yet.",
     stack: [],
     image: "/projects/index-consulting.jpg",
-    liveUrl: "https://index.com.ng",
+    liveUrl: "",
     repoUrl: "",
     featured: true,
     caseStudy: true,
@@ -77,6 +77,7 @@ export const projects = [
     featured: false,
     caseStudy: true,
   },
+  /*
   {
     title: "Sapabay",
     slug: "sapabay",
@@ -89,6 +90,7 @@ export const projects = [
     featured: false,
     caseStudy: true,
   },
+  */
   {
     title: "OpsReady",
     slug: "opsready",
@@ -132,7 +134,7 @@ export const projects = [
     description: "A responsive client website for AirFlourish.",
     stack: [],
     image: "/projects/airflourish.jpg",
-    liveUrl: "",
+    liveUrl: "https://www.airflourish.com/",
     repoUrl: "",
     featured: false,
     caseStudy: true,
@@ -144,7 +146,7 @@ export const projects = [
     description: "Responsive professional website for Grandlife Pharmaceuticals.",
     stack: [],
     image: "/projects/grandlife.jpg",
-    liveUrl: "",
+    liveUrl: "https://grandlifepharmaceuticals.com/",
     repoUrl: "",
     featured: false,
     caseStudy: true,

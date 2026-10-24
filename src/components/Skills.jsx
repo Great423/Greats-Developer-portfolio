@@ -3,6 +3,7 @@ import { FaChevronLeft, FaChevronRight, FaSlash, FaReact, FaHtml5, FaCss3, FaBoo
 import { IoLogoJavascript } from "react-icons/io5";
 import { TbBrandNextjs } from "react-icons/tb";
 import { BiLogoTailwindCss, BiLogoJquery } from "react-icons/bi";
+import { SiTypescript } from "react-icons/si";
 
 export default function Skills() {
   return (
@@ -21,6 +22,10 @@ export default function Skills() {
                 <span className="flex flex-col items-center gap-2 md:gap-3 transition-all hover:scale-125">
                     <IoLogoJavascript className="text-4xl lg:text-7xl text-[#F0DB4F]" />
                     <h4 className='font-primary text-[11px] lg:text-sm'>Javascript</h4>
+                </span>
+                <span className="flex flex-col items-center gap-2 md:gap-3 transition-all hover:scale-125">
+                    <SiTypescript className="text-4xl lg:text-7xl text-[#3178C6]" />
+                    <h4 className='font-primary text-[11px] lg:text-sm'>TypeScript</h4>
                 </span>
                 <span className="flex flex-col items-center gap-2 md:gap-3 transition-all hover:scale-125">
                     <BiLogoJquery className="text-4xl lg:text-7xl text-[#F0DB4F]"  />
