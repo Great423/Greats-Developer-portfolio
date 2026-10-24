@@ -35,7 +35,7 @@ export const projects = [
     image: "/projects/crudpen.jpg",
     liveUrl: "https://crudpen.com",
     repoUrl: "",
-    featured: false,
+    featured: true,
     caseStudy: true,
   },
   {
@@ -48,7 +48,7 @@ export const projects = [
     image: "/projects/index-consulting.jpg",
     liveUrl: "",
     repoUrl: "",
-    featured: true,
+    featured: false,
     caseStudy: true,
   },
   {
@@ -147,6 +147,19 @@ export const projects = [
     stack: [],
     image: "/projects/grandlife.jpg",
     liveUrl: "https://grandlifepharmaceuticals.com/",
+    repoUrl: "",
+    featured: false,
+    caseStudy: true,
+  },
+  {
+    title: "FHAPI",
+    slug: "fhapi",
+    role: "Frontend Developer",
+    description:
+      "Website for FHAPI, a Nigerian NGO improving healthcare through advocacy, research and training.",
+    stack: [],
+    image: "/projects/fhapi.jpg",
+    liveUrl: "https://healthadvancement.ngo/",
     repoUrl: "",
     featured: false,
     caseStudy: true,
