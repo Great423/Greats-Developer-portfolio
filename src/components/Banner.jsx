@@ -1,7 +1,8 @@
 // images 
 import Great from '/assets/about2.png';
 // social media icons 
-import { FaTwitter, FaFacebook, FaGithub, FaWhatsapp  } from 'react-icons/fa';
+import { FaFacebook, FaGithub, FaWhatsapp, FaInstagram, FaLinkedin } from 'react-icons/fa';
+import { FaXTwitter } from 'react-icons/fa6';
 // react scroll
 import { Link } from 'react-scroll';
 // type animation 
@@ -84,7 +85,7 @@ const Banner = () => {
               initial='hidden'
               whileInView={'show'}
               viewport={{once: false, amount: 0.7}}
-             className='flex max-w-max gap-6 items-center mx-auto lg:mx-0'>
+             className='flex flex-wrap gap-4 items-center justify-center lg:justify-start'>
               <Link to="contact" activeClass="active" smooth={true} spy={true} capture>
                 <Button text={'Contact me'} className='btn px-4 py-2' />
               </Link>
@@ -95,6 +96,14 @@ const Banner = () => {
               >
                 Download CV
               </a>
+              <a
+                href="http://chukwukaonyenokwe.cv/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center justify-center rounded-full border border-white/30 bg-white/5 px-4 py-2.5 font-primary text-xs uppercase tracking-[0.12em] text-white transition hover:border-white/60 hover:bg-white/10 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#FF56F6]/70"
+              >
+                View online CV
+              </a>
             </motion.div>
             {/* socials */}
             <motion.div
@@ -103,17 +112,23 @@ const Banner = () => {
             whileInView={'show'}
             // viewport={{once: false, amount: 0.7}}
              className='flex text-[20px] gap-6 max-w-max mx-auto lg:mx-0'>
-              <a href="https://web.facebook.com/chukwuka.onyenokwe" className="hover:scale-150 transition-all">
+              <a href="https://web.facebook.com/chukwuka.onyenokwe" aria-label="Facebook" className="hover:scale-150 transition-all">
                 <FaFacebook />
               </a>
-              <a href="https://github.com/Great423/" className="hover:scale-150 transition-all">
+              <a href="https://github.com/Great423/" aria-label="GitHub" className="hover:scale-150 transition-all">
                 <FaGithub />
               </a>
-              <a href="https://wa.me/2349124160236" className="hover:scale-150 transition-all">
+              <a href="https://wa.me/2349124160236" aria-label="WhatsApp" className="hover:scale-150 transition-all">
                 <FaWhatsapp />
               </a>
-              <a href="https://twitter.com/OnyenokweC" className="hover:scale-150 transition-all">
-                <FaTwitter />
+              <a href="https://x.com/COnyenokwe40411" aria-label="X (Twitter)" className="hover:scale-150 transition-all">
+                <FaXTwitter />
+              </a>
+              <a href="https://www.instagram.com/great.onyenokwe/" aria-label="Instagram" className="hover:scale-150 transition-all">
+                <FaInstagram />
+              </a>
+              <a href="https://www.linkedin.com/in/onyenokwe-great-4028a122a/" aria-label="LinkedIn" className="hover:scale-150 transition-all">
+                <FaLinkedin />
               </a>
             </motion.div>
           </div>

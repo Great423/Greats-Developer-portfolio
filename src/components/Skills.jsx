@@ -3,7 +3,7 @@ import { FaChevronLeft, FaChevronRight, FaSlash, FaReact, FaHtml5, FaCss3, FaBoo
 import { IoLogoJavascript } from "react-icons/io5";
 import { TbBrandNextjs } from "react-icons/tb";
 import { BiLogoTailwindCss, BiLogoJquery } from "react-icons/bi";
-import { SiTypescript } from "react-icons/si";
+import { SiTypescript, SiSupabase } from "react-icons/si";
 
 export default function Skills() {
   return (
@@ -46,6 +46,21 @@ export default function Skills() {
                 <span className="flex flex-col items-center gap-2 md:gap-3 transition-all hover:scale-125">
                     <TbBrandNextjs className="text-4xl lg:text-7xl" />
                     <h4 className='font-primary text-[11px] lg:text-sm'>Next Js</h4>
+                </span>
+                <span className="flex flex-col items-center gap-2 md:gap-3 transition-all hover:scale-125">
+                    <SiSupabase className="text-4xl lg:text-7xl text-[#3ECF8E]" />
+                    <h4 className='font-primary text-[11px] lg:text-sm'>Supabase</h4>
+                </span>
+            </div>
+            <div className="flex flex-wrap gap-3">
+                <span className="rounded-full border border-white/20 bg-white/5 px-4 py-2 font-primary text-[11px] uppercase tracking-[0.12em] text-white/80 transition-colors hover:border-white/40 hover:text-white lg:text-xs">
+                    Frontend Performance Optimization
+                </span>
+                <span className="rounded-full border border-white/20 bg-white/5 px-4 py-2 font-primary text-[11px] uppercase tracking-[0.12em] text-white/80 transition-colors hover:border-white/40 hover:text-white lg:text-xs">
+                    Responsive Web Design
+                </span>
+                <span className="rounded-full border border-white/20 bg-white/5 px-4 py-2 font-primary text-[11px] uppercase tracking-[0.12em] text-white/80 transition-colors hover:border-white/40 hover:text-white lg:text-xs">
+                    State Management (Zustand)
                 </span>
             </div>
         </div>
