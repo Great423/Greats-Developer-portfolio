@@ -1,6 +1,7 @@
 // react icons
 import { BiHomeAlt, BiUser } from 'react-icons/bi';
 import { BsClipboardData, BsBriefcase, BsChatSquareText } from 'react-icons/bs';
+import { MdWorkHistory } from 'react-icons/md';
 // react scroll
 import { Link } from 'react-scroll';
 
@@ -25,6 +26,14 @@ export default function Nav() {
             spy={true} 
             className="cursor-pointer w-[35px] h-[35px] md:w-[40px] md:h-[40px] flex items-center justify-center">
             <BiUser />
+          </Link>
+          <Link
+            to="experience"
+            activeClass="active"
+            smooth={true}
+            spy={true}
+            className="cursor-pointer w-[35px] h-[35px] md:w-[40px] md:h-[40px] flex items-center justify-center">
+            <MdWorkHistory />
           </Link>
           <Link
             to="services"

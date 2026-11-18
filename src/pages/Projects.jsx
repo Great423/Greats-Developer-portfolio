@@ -15,8 +15,11 @@ export default function Projects() {
     window.scrollTo(0, 0);
   }, []);
 
+  // Featured projects first (in data order), then live sites before private work.
   const sortedProjects = [...projects].sort(
-    (a, b) => Number(Boolean(b.liveUrl)) - Number(Boolean(a.liveUrl))
+    (a, b) =>
+      Number(Boolean(b.featured)) - Number(Boolean(a.featured)) ||
+      Number(Boolean(b.liveUrl)) - Number(Boolean(a.liveUrl))
   );
 
   return (
@@ -24,7 +27,10 @@ export default function Projects() {
       <div className="container mx-auto space-y-10">
         <div className="mt-10 space-y-4 text-center">
           <h1 className="text-gradient font-semibold text-4xl">Projects.</h1>
-          <h4 className="text-xl">Selected work I&apos;ve taken on in the past.</h4>
+          <h4 className="text-xl">
+            Production platforms, internal systems and client websites, with
+            the problem, my contribution and the stack for each.
+          </h4>
         </div>
 
         <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
@@ -38,6 +44,7 @@ export default function Projects() {
               image,
               liveUrl,
               repoUrl,
+              status,
               caseStudy,
             } = project;
 
@@ -74,7 +81,7 @@ export default function Projects() {
                     </span>
                   ) : (
                     <span className="absolute left-4 top-4 z-10 inline-flex items-center rounded-full border border-white/15 bg-[#0a0a0a]/80 px-3 py-1.5 font-primary text-[10px] uppercase tracking-[0.16em] text-white/60 backdrop-blur">
-                      Private client work
+                      {status || "Private client work"}
                     </span>
                   )}
                 </div>

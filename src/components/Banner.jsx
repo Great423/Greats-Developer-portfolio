@@ -62,9 +62,9 @@ const Banner = () => {
              className='text-2xl lg:text-4xl font-secondary font-semibold uppercase leading-[1]'>
               <span className='text-white'>I am a </span>
               <TypeAnimation sequence={[
-                'Developer', 2000,
-                'Designer', 2000,
-                'Techie', 2000
+                'Frontend Engineer', 2000,
+                'React & Next.js Developer', 2000,
+                'Electrical Engineer', 2000
               ]}
               speed={50}
               className='text-accent'
@@ -78,7 +78,7 @@ const Banner = () => {
               whileInView={'show'}
               viewport={{once: false, amount: 0.7}}
              className='max-w-lg mx-auto lg:mx-0'>
-              Got the skills to build anything from business sites to interactive web apps. Need a web presence or hiring? Let&apos;s talk!
+              Electrical &amp; Electronics Engineer and Lead Frontend Developer. I&apos;ve owned end-to-end frontend development across three production products in logistics, social media marketing and audio streaming, and I&apos;m the sole developer of an internal HR platform built in Next.js, TypeScript and Supabase. My focus is frontend architecture, API integration and the parts that have to work when the network doesn&apos;t.
             </motion.p>
             <motion.div
               variants={fadeIn('up', 0.5)}

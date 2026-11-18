@@ -8,7 +8,7 @@ import { getProjectBySlug } from "../data/projects";
 const secondaryAction =
   "inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-4 py-2.5 font-primary text-[11px] uppercase tracking-[0.16em] text-white/70 transition hover:border-white/40 hover:text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-[#FF56F6]/70";
 
-function StatusBadge({ liveUrl }) {
+function StatusBadge({ liveUrl, status }) {
   if (liveUrl) {
     return (
       <span className="inline-flex items-center gap-2 rounded-full border border-[#42A6E3]/40 bg-white/5 px-3 py-1.5 font-primary text-[10px] uppercase tracking-[0.16em] text-white">
@@ -20,8 +20,21 @@ function StatusBadge({ liveUrl }) {
 
   return (
     <span className="inline-flex items-center rounded-full border border-white/15 bg-white/5 px-3 py-1.5 font-primary text-[10px] uppercase tracking-[0.16em] text-white/60">
-      Private client work
+      {status || "Private client work"}
     </span>
+  );
+}
+
+function CaseStudyParagraph({ paragraph }) {
+  if (typeof paragraph === "string") {
+    return <p className="text-white/70 leading-8">{paragraph}</p>;
+  }
+
+  return (
+    <p className="text-white/70 leading-8">
+      <span className="font-semibold text-white">{paragraph.lead}</span>{" "}
+      {paragraph.text}
+    </p>
   );
 }
 
@@ -53,13 +66,22 @@ export default function ProjectInfo() {
     );
   }
 
-  const { title, role, description, stack, image, liveUrl, repoUrl, caseStudy } =
-    project;
+  const {
+    title,
+    role,
+    description,
+    stack,
+    image,
+    liveUrl,
+    repoUrl,
+    status,
+    caseStudy,
+  } = project;
 
   if (!caseStudy) {
     return (
       <div className="container mx-auto max-w-3xl py-24 text-center">
-        <StatusBadge liveUrl={liveUrl} />
+        <StatusBadge liveUrl={liveUrl} status={status} />
         <h1 className="text-gradient mt-6 font-semibold text-4xl">{title}</h1>
         <p className="mt-4 text-white/60">
           A written case study for this project isn&apos;t available yet.
@@ -96,7 +118,7 @@ export default function ProjectInfo() {
             <FaArrowLeft aria-hidden="true" />
             All projects
           </Link>
-          <StatusBadge liveUrl={liveUrl} />
+          <StatusBadge liveUrl={liveUrl} status={status} />
         </div>
 
         <header className="mt-10 max-w-3xl">
@@ -154,10 +176,36 @@ export default function ProjectInfo() {
         </div>
 
         <div className="mt-12 grid gap-10 lg:grid-cols-[1.6fr_1fr]">
-          <section>
-            <h2 className="text-gradient font-primary text-2xl">Overview</h2>
-            <p className="mt-5 text-white/70 leading-8">{description}</p>
-          </section>
+          <div className="space-y-12">
+            {caseStudy.sections?.length ? (
+              caseStudy.sections.map((section) => (
+                <section key={section.heading}>
+                  <h2 className="text-gradient font-primary text-2xl">
+                    {section.heading}
+                  </h2>
+                  <div className="mt-5 space-y-5">
+                    {section.paragraphs.map((paragraph, index) => (
+                      <CaseStudyParagraph key={index} paragraph={paragraph} />
+                    ))}
+                  </div>
+                  {section.bullets?.length > 0 && (
+                    <ul className="mt-5 list-disc space-y-3 pl-5 text-white/70 leading-8 marker:text-[#FF56F6]">
+                      {section.bullets.map((bullet) => (
+                        <li key={bullet}>{bullet}</li>
+                      ))}
+                    </ul>
+                  )}
+                </section>
+              ))
+            ) : (
+              <section>
+                <h2 className="text-gradient font-primary text-2xl">
+                  Overview
+                </h2>
+                <p className="mt-5 text-white/70 leading-8">{description}</p>
+              </section>
+            )}
+          </div>
 
           <aside className="h-fit rounded-2xl border border-white/10 bg-black/20 p-6 backdrop-blur-sm">
             <h2 className="font-primary text-lg uppercase tracking-[0.12em] text-white">
@@ -175,7 +223,7 @@ export default function ProjectInfo() {
                   Status
                 </dt>
                 <dd className="mt-1 text-white/80">
-                  {liveUrl ? "Live" : "Private client work"}
+                  {liveUrl ? "Live" : status || "Private client work"}
                 </dd>
               </div>
               {stack.length > 0 && (

@@ -12,7 +12,8 @@
     "build": "vite build",
     "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview",
-    "screenshots": "node scripts/capture-screenshots.mjs"
+    "screenshots": "node scripts/capture-screenshots.mjs",
+    "build:cv": "node scripts/build-cv.mjs"
   },
   "dependencies": {
     "@emailjs/browser": "^4.3.3",
