@@ -13,6 +13,7 @@ export const projects = [
   {
     title: "Fuelup Global",
     slug: "fuelup-global",
+    sector: "Logistics platform",
     role: "Lead Frontend Developer (Complete Frontend Development)",
     description:
       "Complete frontend for a Lagos fuel-delivery platform: the marketing website, a role-based customer and rider application, and a separate admin application. Migrated the customer platform from a Vite SPA to the Next.js App Router.",
@@ -126,6 +127,7 @@ export const projects = [
     title: "Dataflex HR Employee Management System",
     shortTitle: "Dataflex HR",
     slug: "dataflex",
+    sector: "Enterprise HR platform",
     role: "Full-Stack Developer (Sole Developer)",
     description:
       "Internal HR management platform under development: directory, leave, attendance, assets, recruitment, onboarding and performance, with separation of duties enforced in PostgreSQL row-level security.",
@@ -135,6 +137,7 @@ export const projects = [
     repoUrl: "",
     featured: true,
     status: "Internal · In development",
+    visualTags: ["Directory", "Leave", "Attendance", "Assets", "Recruitment", "Onboarding", "Performance"],
     caseStudy: {
       sections: [
         {
@@ -202,6 +205,7 @@ export const projects = [
   {
     title: "Viraleety",
     slug: "viraleety",
+    sector: "Social media marketing",
     role: "Frontend Developer (End-to-end Customer Application Development)",
     description:
       "Complete customer-facing frontend for a social media marketing platform: balance-funded ordering, a service catalogue spanning over twenty platforms, and order tracking.",
@@ -276,6 +280,7 @@ export const projects = [
   {
     title: "Radio Church",
     slug: "radio-church",
+    sector: "Audio streaming",
     role: "Frontend Developer",
     description:
       "Frontend for a live church radio platform with giving, service times and comments, running as separate deployments for two church zones, with a dedicated phone layout.",
@@ -346,8 +351,26 @@ export const projects = [
     },
   },
   {
+    // Restored from the project entry removed in e3c5da2 and the 2024 records
+    // in Data.json. The 2024 records list HTML, CSS, JavaScript and Tailwind CSS,
+    // but the live site has since been rebuilt, so no stack is claimed here.
+    title: "Crudpen",
+    slug: "crudpen",
+    sector: "Software agency website",
+    role: "Lead Frontend Web Developer",
+    description:
+      "Company website for Crudpen Technologies, the software agency that designs and develops applications for its clients, where I was Lead Frontend Web Developer from 2022 to 2025.",
+    stack: [],
+    image: "/projects/crudpen.jpg",
+    liveUrl: "https://www.crudpen.com/",
+    repoUrl: "",
+    featured: false,
+    caseStudy: null,
+  },
+  {
     title: "Grandlife Pharmaceuticals",
     slug: "grandlife",
+    sector: "Company website",
     role: "Frontend Developer",
     description: "Responsive company website for Grandlife Pharmaceuticals.",
     stack: [],
@@ -360,6 +383,7 @@ export const projects = [
   {
     title: "FHAPI",
     slug: "fhapi",
+    sector: "NGO website",
     role: "Frontend Developer",
     description:
       "Website for FHAPI, a Nigerian NGO improving healthcare through advocacy, research and training.",
