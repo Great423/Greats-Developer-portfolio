@@ -5,7 +5,10 @@ import { Link as RouteLink } from 'react-router-dom';
 import { FaArrowRight } from "react-icons/fa";
 
 const WorkCard = ({project}) => {
-  const { title, role, image, liveUrl, repoUrl, slug, caseStudy } = project;
+  const { title, shortTitle, role, image, liveUrl, repoUrl, slug, caseStudy } =
+    project;
+  // The card overlay has room for one line, so long names use their short form.
+  const displayTitle = shortTitle || title;
 
   const detailsUrl = caseStudy ? `/project-info/${slug}` : "";
   const externalUrl = detailsUrl ? "" : liveUrl || repoUrl;
@@ -51,7 +54,7 @@ const WorkCard = ({project}) => {
       </div>
       {/* title */}
       <div className="absolute bottom-14 lg:-bottom-full left-2 md:left-12 lg:group-hover:bottom-16 transition-all duration-700 z-50">
-        <span className="md:text-3xl text-white">{title}</span>
+        <span className="md:text-3xl text-white">{displayTitle}</span>
       </div>
       {ctaLabel && (
         <span className="font-primary bg-white/10 backdrop-blur-sm hover:bg-gradient-to-r to-[#FF56F6] via-[#b936ee] from-[#406aff] border border-white text-xs md:text-sm rounded-full px-2 py-1 md:px-4 md:py-2 absolute bottom-4 lg:-bottom-full left-2 md:left-12 lg:group-hover:bottom-4 transition-all duration-700 z-50 flex items-center gap-2">

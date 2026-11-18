@@ -19,7 +19,7 @@ const About = () => {
     <section id="about" className="section" ref={ref}>
       <div className="container mx-auto">
         <div className='flex flex-col gap-y-10 lg:flex-row lg:items-center lg:gap-x-20 lg:gap-y-0'>
-          {/* img */}                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             
+          {/* img */}
           <motion.div
           variants={fadeIn('right', 0.1)}
           initial='hidden'
@@ -43,41 +43,26 @@ const About = () => {
             variants={fadeIn('left', 0.3)}
             initial='hidden'
             whileInView={'show'}
-             className='mb-6 space-y-3'>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    
-              My name is Onyenokwe Great Chukwuka, a passionate Front-end Web Developer with years of experience.
-              Experienced with all stages of the development cycle from Planning and analysis, Design,
-              Development, Testing, Deployment, Maintenance and Updates for dynamic web projects. 
+             className='mb-6 space-y-3'>
+              I&apos;m Onyenokwe Great Chukwuka, an Electrical &amp; Electronics Engineering graduate (B.Eng., Federal University Otuoke) working as a frontend developer since 2022.
               <br />
-              My journey in the dynamic world of web development has been shaped by meaningful experiences. 
-              A significant chapter of this journey unfolded within the GDSC <b>(Google Developers Students CLub)</b> community, where I had the privilege
-              of donning the hat of an assistant Frontend Developer Lead.
+              I specialise in React, Next.js and TypeScript. I&apos;ve owned end-to-end frontend development across three production products in logistics, social media marketing and audio streaming. Most of that work sits where the frontend meets everything else: integrating REST APIs, structuring state for applications that outgrow their first version, building the consoles operators run a business on, and agreeing the data contract with backend engineers before either side builds against it.
               <br />
-              Beyond coding, I bring a strong background in management and leadership, rounding out my capabilities 
-              to not only deliver exceptional projects but to also collaborate effectively within a team. 
+              I&apos;ve held Lead Frontend titles at Crudpen Technologies and FuelupGlobal, where I owned frontend architecture decisions, reviewed code and mentored junior developers. I&apos;m currently the sole developer of an internal HR management platform built in Next.js, TypeScript and Supabase, covering the application, the database schema and the authorisation model.
               <br />
-              I&apos;m also passionate about music and playing games and I&apos;m always curious to learn more when it comes to new technologies and creative coding. 
-              <br />
+              My engineering background isn&apos;t a detour from this work. I interned on gas distribution and electrical maintenance at Nigerian Gas Company (NNPC), and for my final-year project I designed and constructed a biometric fingerprint attendance system. When a product involves energy, logistics or field operations, I already understand the system the software is describing.
             </motion.p>
             {/* stats */}
             <motion.div
             variants={fadeIn('left', 0.4)}
             initial='hidden'
             whileInView={'show'}
-            
+
              className='flex gap-6 lg:gap-10 mb-6'>
               <div>
                 <div className='text-[25px] md:text-[40px] font-tertiary text-gradient mb-2'>
-                  {inView ? <CountUp start={0} end={35} duration={3} /> : null}
+                  {inView ? <CountUp start={0} end={4} duration={3} /> : null}
                   +
-                </div>
-                <div className="font-primary text-[11px] md:text-sm tracking-[2px]">
-                  Projects <br />
-                  Completed
-                </div>
-              </div>
-              <div>
-                <div className='text-[25px] md:text-[40px] font-tertiary text-gradient mb-2'>
-                  {inView ? <CountUp start={0} end={3} duration={3} /> : null}
                 </div>
                 <div className="font-primary text-[11px] md:text-sm tracking-[2px]">
                   Years of <br />
@@ -86,12 +71,21 @@ const About = () => {
               </div>
               <div>
                 <div className='text-[25px] md:text-[40px] font-tertiary text-gradient mb-2'>
-                  {inView ? <CountUp start={0} end={20} duration={3} /> : null}
+                  {inView ? <CountUp start={0} end={3} duration={3} /> : null}
+                </div>
+                <div className="font-primary text-[11px] md:text-sm tracking-[2px]">
+                  Production <br />
+                  Frontends
+                </div>
+              </div>
+              <div>
+                <div className='text-[25px] md:text-[40px] font-tertiary text-gradient mb-2'>
+                  {inView ? <CountUp start={0} end={50} duration={3} /> : null}
                   +
                 </div>
                 <div className="font-primary text-[11px] md:text-sm tracking-[2px]">
-                  Satisfied <br />
-                  Clients
+                  Students <br />
+                  Mentored
                 </div>
               </div>
             </motion.div>
@@ -101,7 +95,7 @@ const About = () => {
             whileInView={'show'}
              className='flex gap-8 items-center'>
               <a href="/Great-Onyenokwe-CV.pdf" download>
-                <Button text={'Download CV'} className='btn btn-lg'/> 
+                <Button text={'Download CV'} className='btn btn-lg'/>
               </a>
             </motion.div>
           </div>

@@ -53,8 +53,26 @@ const Contact = () => {
               <FaChevronLeft />{`Get in touch`}<FaSlash className="rotate-90" /><FaChevronRight />
             </h4>
             <h2 className='text-[45px] lg:text-[90px] leading-none'>
-              Let&apos;s work <br /> together!
+              Let&apos;s build <br /> something solid.
             </h2>
+            {/* Writing rule: no em dashes or en dashes in this content. */}
+            <p className='max-w-lg pt-2'>
+              I&apos;m open to frontend engineering roles, contract work and collaboration. My strongest fit is React and Next.js products with real integration work behind them, and anything touching energy, logistics or field operations, where my engineering background does double duty.
+            </p>
+            <dl className='space-y-3 pt-2'>
+              <div>
+                <dt className='font-primary text-[11px] uppercase tracking-[0.18em] text-white/45'>Email</dt>
+                <dd>
+                  <a href='mailto:chukwukaonyenokwe@gmail.com' className='transition-colors hover:text-accent'>
+                    chukwukaonyenokwe@gmail.com
+                  </a>
+                </dd>
+              </div>
+              <div>
+                <dt className='font-primary text-[11px] uppercase tracking-[0.18em] text-white/45'>Location</dt>
+                <dd>Effurun, Delta State, Nigeria · Open to remote</dd>
+              </div>
+            </dl>
           </motion.div>
           <motion.form
             ref={form}

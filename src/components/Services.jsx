@@ -1,5 +1,5 @@
 // icons
-import { FaCode, FaChevronLeft, FaChevronRight, FaSlash, FaPaintBrush } from "react-icons/fa";
+import { FaCode, FaChevronLeft, FaChevronRight, FaSlash, FaPlug } from "react-icons/fa";
 import { MdManageAccounts } from "react-icons/md";
 // framer motion
 import { motion } from 'framer-motion';
@@ -12,24 +12,21 @@ import Button from './Button';
 
 export default function Services() {
   // services data
+  // Writing rule: no em dashes or en dashes in this content.
 const services = [
   {
-    name: 'Web Design',
-    description: `Crafting visually appealing and intuitive interfaces to enhance 
-    the overall user experience and engagement.`,
-    logo: <FaPaintBrush />,
-  },
-  {
-    name: 'Web Development',
-    description: `Building responsive and user-friendly websites with a focus
-    on clean code and optimal performance.`,
+    name: 'Frontend Architecture & Application Development',
+    description: `I build production React and Next.js applications: component architecture that survives a second feature set, routing and state structured for growth, and performance work against real constraints such as bundle size, render cost and mobile networks.`,
     logo: <FaCode />,
   },
   {
-    name: 'Project Management',
-    description: `As a web development project manager, I plan goals, coordinate tasks, 
-     timelines and budgets, ensure quality, and provide ongoing client support. 
-     My role is to guide projects efficiently from conception to completion, prioritizing client satisfaction at every step.`,
+    name: 'API Integration & Data Layer',
+    description: `I connect interfaces to the systems behind them: REST API integration, authentication and session handling, payment handoffs, and operational consoles built on live data. I work closely with backend engineers on how the frontend and the API fit together.`,
+    logo: <FaPlug />,
+  },
+  {
+    name: 'Technical Leadership & Mentorship',
+    description: `I've led frontend at two companies, reviewing code, maintaining quality standards and mentoring junior developers. Through GDSC I mentored more than 50 students, and I document what I build so the next person can work in it.`,
      logo: <MdManageAccounts />
     },
 ];
@@ -49,7 +46,7 @@ const services = [
             initial='hidden'
             whileInView={'show'}
              className="h3 max-w-[455px] mb-6">
-              I&apos;m a Freelance Front-end Developer with over 5 years of experience
+              Frontend engineer with four years of professional experience building production web applications, and an Electrical &amp; Electronics Engineering background
             </motion.h3>
             <Link to="work">
               <motion.div

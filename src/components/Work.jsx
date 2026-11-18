@@ -21,10 +21,10 @@ export default function Work() {
             </h2>
             <p
             className="max-w-sm mb-6">
-            Explore the projects below to gain insights into the design aesthetics, 
-            functionalities, and the technologies employed in their development. 
-            Click on each project to discover more about its purpose, features, and the 
-            frontend technologies utilized to bring it to life.
+            Three builds that show the range: the complete frontend of a
+            fuel-delivery platform, an internal HR platform I&apos;m building solo,
+            and the customer application of a social media marketing product.
+            Each one covers the problem, what I built and the stack behind it.
             </p>
             <RouteLink to="/projects" target="_blank">
               <Button text={'View all projects'} className="btn btn-sm" />
