@@ -42,8 +42,10 @@ function HaloFallback({ visible }) {
  * Lazy WebGL halo around the hero portrait. Three.js is fetched only when the
  * browser is idle, never blocks the first paint, and the canvas ignores all
  * pointer events so it cannot interfere with text, links or scrolling.
+ * `interactionRef` names the element (the portrait area) that takes
+ * drag-to-spin and tap-to-pulse once the scene is running.
  */
-export default function HeroScene({ className = "" }) {
+export default function HeroScene({ className = "", interactionRef = null }) {
   const canvasRef = useRef(null);
   const reduce = useReducedMotion();
   const [state, setState] = useState("fallback");
@@ -70,6 +72,7 @@ export default function HeroScene({ className = "" }) {
           instance = createHeroScene(canvasRef.current, {
             reducedMotion: Boolean(reduce),
             lite: isLite,
+            interactionTarget: interactionRef?.current ?? null,
             onReady: () => !cancelled && setState("ready"),
             onFail: () => !cancelled && setState("failed"),
           });
@@ -85,7 +88,7 @@ export default function HeroScene({ className = "" }) {
       cancelIdle(handle);
       instance?.dispose();
     };
-  }, [reduce]);
+  }, [reduce, interactionRef]);
 
   return (
     <div

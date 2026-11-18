@@ -164,7 +164,7 @@ export default function Contact() {
             </div>
 
             <div className="mt-7 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
-              <Button type="submit" disabled={status === "sending"} icon={status === "sending" ? FiLoader : FiSend} className="w-full sm:w-auto">
+              <Button type="submit" magnetic disabled={status === "sending"} icon={status === "sending" ? FiLoader : FiSend} className="w-full sm:w-auto">
                 {status === "sending" ? "Sending..." : "Send message"}
               </Button>
               <div aria-live="polite" role="status" className="min-h-[1.5rem] text-[15px]">

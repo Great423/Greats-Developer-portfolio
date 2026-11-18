@@ -3,6 +3,7 @@ import { forwardRef } from "react";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { press } from "../../lib/motion";
+import useMagnetic from "../../hooks/useMagnetic";
 
 const MotionLink = motion(Link);
 
@@ -20,12 +21,24 @@ const variants = {
 /**
  * One button for the whole site. Renders a router Link (`to`), an anchor
  * (`href`) or a <button>, with the same look and press feedback.
+ * `magnetic` adds a gentle pull towards the mouse (fine pointers only); it
+ * replaces the hover lift so the two never fight over the same transform.
  */
 const Button = forwardRef(function Button(
-  { to, href, external = false, variant = "primary", icon: Icon, className = "", children, ...rest },
+  { to, href, external = false, variant = "primary", icon: Icon, magnetic = false, className = "", children, ...rest },
   ref
 ) {
   const classes = `${base} ${variants[variant]} ${className}`;
+  const pull = useMagnetic({ enabled: magnetic });
+  const motionProps = magnetic
+    ? {
+        whileTap: press.whileTap,
+        transition: press.transition,
+        style: pull.style,
+        onPointerMove: pull.handlers.onPointerMove,
+        onPointerLeave: pull.handlers.onPointerLeave,
+      }
+    : press;
   const content = (
     <>
       <span>{children}</span>
@@ -41,7 +54,7 @@ const Button = forwardRef(function Button(
 
   if (to) {
     return (
-      <MotionLink ref={ref} to={to} className={classes} {...press} {...rest}>
+      <MotionLink ref={ref} to={to} className={classes} {...motionProps} {...rest}>
         {content}
       </MotionLink>
     );
@@ -50,14 +63,14 @@ const Button = forwardRef(function Button(
   if (href) {
     const externalProps = external ? { target: "_blank", rel: "noopener noreferrer" } : {};
     return (
-      <motion.a ref={ref} href={href} className={classes} {...externalProps} {...press} {...rest}>
+      <motion.a ref={ref} href={href} className={classes} {...externalProps} {...motionProps} {...rest}>
         {content}
       </motion.a>
     );
   }
 
   return (
-    <motion.button ref={ref} type="button" className={classes} {...press} {...rest}>
+    <motion.button ref={ref} type="button" className={classes} {...motionProps} {...rest}>
       {content}
     </motion.button>
   );

@@ -133,10 +133,10 @@ export default function Hero() {
             </motion.p>
 
             <motion.div variants={fadeUp} className="mt-9 flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center">
-              <Button to={{ pathname: "/", hash: "#contact" }} icon={FiArrowRight}>
+              <Button to={{ pathname: "/", hash: "#contact" }} replace magnetic icon={FiArrowRight}>
                 Contact me
               </Button>
-              <Button href={links.cvDownload} download variant="secondary" icon={FiDownload}>
+              <Button href={links.cvDownload} download magnetic variant="secondary" icon={FiDownload}>
                 Download CV
               </Button>
               <Button href={links.cvOnline} external variant="ghost" icon={FiArrowUpRight} className="self-start sm:self-auto">
@@ -152,7 +152,7 @@ export default function Hero() {
           <motion.div
             ref={visualRef}
             style={{ y: portraitY }}
-            className="relative order-1 mx-auto w-[min(64vw,270px)] sm:w-[320px] lg:order-2 lg:w-full lg:max-w-[420px]"
+            className="relative order-1 mx-auto w-[min(64vw,270px)] select-none [-webkit-tap-highlight-color:transparent] sm:w-[320px] lg:order-2 lg:w-full lg:max-w-[420px]"
           >
             <motion.div variants={scaleIn} initial="hidden" animate="show" className="relative aspect-square">
               <motion.div
@@ -161,8 +161,9 @@ export default function Hero() {
                 className="absolute -inset-[12%] rounded-full bg-brand-gradient opacity-20 blur-3xl"
               />
 
-              {/* Layer 1: WebGL circuit halo, larger than the portrait and behind it. */}
-              <HeroScene className="absolute -inset-[30%] z-0" />
+              {/* Layer 1: WebGL circuit halo, larger than the portrait and behind it.
+                  Drag sideways across the portrait to spin it; tap for a pulse. */}
+              <HeroScene className="absolute -inset-[30%] z-0" interactionRef={visualRef} />
 
               {/* Layer 2: the portrait, tilting gently towards the pointer. */}
               <motion.div style={{ rotateX: tiltX, rotateY: tiltY, transformPerspective: 1000 }} className="absolute inset-0 z-10">
@@ -174,6 +175,7 @@ export default function Hero() {
                     width="1126"
                     height="1093"
                     decoding="async"
+                    draggable="false"
                     className="h-full w-full object-cover"
                   />
                   <div aria-hidden="true" className="absolute inset-0 rounded-full shadow-[inset_0_0_40px_rgba(10,10,10,0.6)]" />

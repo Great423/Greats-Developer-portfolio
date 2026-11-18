@@ -180,9 +180,14 @@ const gradientMix = (v) => Math.min(1, Math.max(0, 0.5 + 0.42 * (v.x * 0.55 + v.
 /**
  * Creates the scene on `canvas`. Returns { dispose }.
  * Options: reducedMotion (render one still frame), lite (phones and coarse
- * pointers: fewer nodes and signals, lower pixel ratio), onReady, onFail.
+ * pointers: fewer nodes and signals, lower pixel ratio, 30 fps while idle),
+ * interactionTarget (element that receives drag-to-spin and tap-to-pulse;
+ * vertical swipes on it still scroll the page), onReady, onFail.
  */
-export function createHeroScene(canvas, { reducedMotion = false, lite = false, onReady, onFail } = {}) {
+export function createHeroScene(
+  canvas,
+  { reducedMotion = false, lite = false, interactionTarget = null, onReady, onFail } = {}
+) {
   const pixelRatio = Math.min(window.devicePixelRatio || 1, lite ? 1.5 : 1.75);
   const renderer = new WebGLRenderer({ canvas, alpha: true, antialias: true, powerPreference: "low-power" });
   renderer.setPixelRatio(pixelRatio);
@@ -300,6 +305,71 @@ export function createHeroScene(canvas, { reducedMotion = false, lite = false, o
   };
   if (followPointer) window.addEventListener("pointermove", onPointerMove, { passive: true });
 
+  // Touch and drag: a horizontal drag spins the lattice (with inertia), a tap
+  // sends a pulse through it. `touch-action: pan-y` hands vertical swipes to
+  // the browser, which scrolls the page and cancels the gesture here.
+  const drag = { id: null, startX: 0, startY: 0, lastX: 0, lastTime: 0, startTime: 0, horizontal: false };
+  let spinVelocity = 0;
+  let pulse = 0;
+  const DRAG_GAIN = 0.009;
+  const target = reducedMotion ? null : interactionTarget;
+  const previousStyle = target ? { touchAction: target.style.touchAction, cursor: target.style.cursor } : null;
+
+  const onPointerDown = (event) => {
+    if (drag.id !== null || (event.pointerType === "mouse" && event.button !== 0)) return;
+    // Mouse: stop the press from starting a text selection or an image drag.
+    if (event.pointerType === "mouse") event.preventDefault();
+    drag.id = event.pointerId;
+    drag.startX = drag.lastX = event.clientX;
+    drag.startY = event.clientY;
+    drag.startTime = drag.lastTime = performance.now();
+    drag.horizontal = false;
+    spinVelocity *= 0.3;
+    start();
+  };
+  const onPointerMoveDrag = (event) => {
+    if (event.pointerId !== drag.id) return;
+    const now = performance.now();
+    if (!drag.horizontal) {
+      const dx = Math.abs(event.clientX - drag.startX);
+      const dy = Math.abs(event.clientY - drag.startY);
+      if (dx < 6 || dx < dy) return;
+      drag.horizontal = true;
+      if (event.pointerType === "mouse") target.setPointerCapture?.(event.pointerId);
+      target.style.cursor = "grabbing";
+    }
+    const delta = (event.clientX - drag.lastX) * DRAG_GAIN;
+    const elapsedMove = Math.max(1, now - drag.lastTime) / 1000;
+    spin += delta;
+    spinVelocity = spinVelocity * 0.6 + (delta / elapsedMove) * 0.4;
+    drag.lastX = event.clientX;
+    drag.lastTime = now;
+  };
+  const endDrag = (event, cancelled) => {
+    if (event.pointerId !== drag.id) return;
+    const moved = Math.hypot(event.clientX - drag.startX, event.clientY - drag.startY);
+    const quick = performance.now() - drag.startTime < 400;
+    if (!cancelled && !drag.horizontal && moved < 8 && quick) pulse = 1;
+    // A release after the pointer has rested keeps no momentum.
+    if (performance.now() - drag.lastTime > 90) spinVelocity = 0;
+    spinVelocity = Math.max(-4, Math.min(4, spinVelocity));
+    drag.id = null;
+    drag.horizontal = false;
+    if (followPointer) target.style.cursor = "grab";
+  };
+  const onPointerUp = (event) => endDrag(event, false);
+  const onPointerCancel = (event) => endDrag(event, true);
+
+  if (target) {
+    target.style.touchAction = "pan-y pinch-zoom";
+    if (followPointer) target.style.cursor = "grab";
+    target.addEventListener("pointerdown", onPointerDown);
+    target.addEventListener("pointermove", onPointerMoveDrag, { passive: true });
+    // Releases are heard on the window so a drag can end anywhere.
+    window.addEventListener("pointerup", onPointerUp);
+    window.addEventListener("pointercancel", onPointerCancel);
+  }
+
   // Sizing
   const resize = () => {
     const { clientWidth: width, clientHeight: height } = canvas;
@@ -323,31 +393,45 @@ export function createHeroScene(canvas, { reducedMotion = false, lite = false, o
     elapsed += dt;
     entrance = Math.min(1, entrance + dt / 1.6);
     const reveal = 1 - Math.pow(1 - entrance, 3);
-    edgeMaterial.uniforms.uOpacity.value = 0.55 * reveal;
-    ringMaterial.uniforms.uOpacity.value = 0.5 * reveal;
-    nodeMaterial.uniforms.uOpacity.value = 0.85 * reveal;
+    pulse = Math.max(0, pulse - dt / 1.2);
+    const energy = pulse * pulse;
+    edgeMaterial.uniforms.uOpacity.value = 0.55 * reveal * (1 + 0.9 * energy);
+    ringMaterial.uniforms.uOpacity.value = 0.5 * reveal * (1 + 0.8 * energy);
+    nodeMaterial.uniforms.uOpacity.value = Math.min(1, 0.85 * reveal * (1 + 0.4 * energy));
     signalMaterial.uniforms.uOpacity.value = reveal;
     orbitMaterial.uniforms.uOpacity.value = reveal;
     nodeMaterial.uniforms.uTime.value = elapsed;
-    root.scale.setScalar(0.9 + 0.1 * reveal);
+    root.scale.setScalar(0.9 + 0.1 * reveal + 0.05 * energy);
 
-    spin += dt * 0.055;
+    // Idle drift, plus momentum left over from a drag.
+    spin += dt * 0.055 + spinVelocity * dt;
+    if (drag.id === null) spinVelocity *= Math.exp(-dt * 2.2);
+    if (Math.abs(spinVelocity) < 0.02) spinVelocity = 0;
+
+    // The lattice tips back slightly as the hero scrolls away.
+    const scrolled = Math.min(1, Math.max(0, window.scrollY / window.innerHeight));
     eased.x += (pointer.x - eased.x) * Math.min(1, dt * 2.4);
     eased.y += (pointer.y - eased.y) * Math.min(1, dt * 2.4);
     root.rotation.y = -0.5 + spin + eased.x * 0.38;
-    root.rotation.x = 0.38 + eased.y * 0.24;
+    root.rotation.x = 0.38 + eased.y * 0.24 + scrolled * 0.35;
     ringGroup.rotation.y = 0.2 + eased.x * 0.18;
-    ringGroup.rotation.x = 1.16 + eased.y * 0.12;
+    ringGroup.rotation.x = 1.16 + eased.y * 0.12 + scrolled * 0.2;
 
-    updateSignals(dt);
-    orbitAngle += dt * 0.32;
+    updateSignals(dt * (1 + 3 * energy));
+    orbitAngle += dt * 0.32 * (1 + 3 * energy);
     updateOrbit();
   };
 
   const render = () => renderer.render(scene, camera);
 
+  // Phones render at 30 fps while idle and at full rate during a drag, its
+  // momentum or a pulse, which keeps battery and heat down on 90/120 Hz panels.
+  const IDLE_FRAME_MS = 1000 / 30 - 2;
+  const interacting = () => drag.id !== null || spinVelocity !== 0 || pulse > 0;
+
   const tick = (now) => {
     frame = requestAnimationFrame(tick);
+    if (lite && !interacting() && now - last < IDLE_FRAME_MS) return;
     const dt = Math.min(0.05, (now - last) / 1000);
     last = now;
     update(dt);
@@ -401,6 +485,13 @@ export function createHeroScene(canvas, { reducedMotion = false, lite = false, o
       intersection.disconnect();
       document.removeEventListener("visibilitychange", onVisibility);
       window.removeEventListener("pointermove", onPointerMove);
+      if (target) {
+        target.removeEventListener("pointerdown", onPointerDown);
+        target.removeEventListener("pointermove", onPointerMoveDrag);
+        window.removeEventListener("pointerup", onPointerUp);
+        window.removeEventListener("pointercancel", onPointerCancel);
+        Object.assign(target.style, previousStyle);
+      }
       canvas.removeEventListener("webglcontextlost", onContextLost);
       geometries.forEach((geometry) => geometry.dispose());
       materials.forEach((material) => material.dispose());

@@ -35,9 +35,11 @@ const page = (element) => (
 function AnimatedRoutes() {
   const location = useLocation();
   return (
+    // No `initial={false}` here: it would also cancel the entrance and
+    // scroll-reveal animations inside the first page. PageTransition skips
+    // only the page fade on first load instead.
     <AnimatePresence
       mode="wait"
-      initial={false}
       onExitComplete={() => {
         if (!window.location.hash) window.scrollTo(0, 0);
       }}

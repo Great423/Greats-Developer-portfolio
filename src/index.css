@@ -8,6 +8,8 @@
   :root {
     color-scheme: dark;
     --header-h: 72px;
+    /* Room kept clear for the floating bottom navigation (below lg). */
+    --bottom-nav-space: calc(5.25rem + env(safe-area-inset-bottom, 0px));
   }
 
   html {
@@ -32,6 +34,21 @@
 
   [id] {
     scroll-margin-top: calc(var(--header-h) + 16px);
+  }
+
+  /*
+   * Phones and tablets: keep the end of the page and any keyboard-focused
+   * element clear of the bottom navigation. Only the bottom edge is padded,
+   * so section links still align with the header offset above.
+   */
+  @media (max-width: 959.98px) {
+    html {
+      scroll-padding-bottom: var(--bottom-nav-space);
+    }
+
+    body {
+      padding-bottom: var(--bottom-nav-space);
+    }
   }
 
   @media (prefers-reduced-motion: reduce) {
@@ -92,6 +109,22 @@
   .group:hover .gradient-border::before,
   .group:focus-within .gradient-border::before {
     opacity: 1;
+  }
+
+  /* Floating bottom navigation: clear of Android gesture bars and display cutouts. */
+  .bottom-nav {
+    left: max(0.75rem, env(safe-area-inset-left, 0px));
+    right: max(0.75rem, env(safe-area-inset-right, 0px));
+    bottom: calc(0.625rem + env(safe-area-inset-bottom, 0px));
+  }
+
+  /* Horizontal scroller without a visible scrollbar (still keyboard and swipe scrollable). */
+  .scrollbar-none {
+    scrollbar-width: none;
+  }
+
+  .scrollbar-none::-webkit-scrollbar {
+    display: none;
   }
 
   .skip-link {
