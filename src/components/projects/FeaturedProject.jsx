@@ -2,7 +2,7 @@
 import { useRef } from "react";
 import { motion, useReducedMotion, useScroll, useTransform } from "framer-motion";
 import { FiArrowRight, FiArrowUpRight } from "react-icons/fi";
-import { fadeUp, staggerContainer, viewportOnce } from "../../lib/motion";
+import { cardPress, fadeUp, staggerContainer, viewportOnce } from "../../lib/motion";
 import useTilt from "../../hooks/useTilt";
 import Button from "../ui/Button";
 import StatusBadge from "../ui/StatusBadge";
@@ -33,19 +33,23 @@ export default function FeaturedProject({ project, index, reverse = false }) {
         <motion.div
           ref={tilt.ref}
           style={tilt.style}
+          {...cardPress}
           className="gradient-border relative aspect-[16/10] overflow-hidden rounded-[22px] border border-white/10 bg-ink-800 shadow-frame"
         >
           <motion.div style={project.image ? { y: imageY } : undefined} className={`absolute ${project.image ? "inset-[-6%]" : "inset-0"}`}>
-            <ProjectMedia
-              project={project}
-              className="transition-transform duration-[1200ms] ease-out-expo group-hover:scale-[1.035]"
-            />
+            {/* Depth: the image drifts against the tilt while the badge floats with it. */}
+            <motion.div style={tilt.mediaStyle} className="h-full w-full">
+              <ProjectMedia
+                project={project}
+                className="transition-transform duration-[1200ms] ease-out-expo group-hover:scale-[1.035]"
+              />
+            </motion.div>
           </motion.div>
           <div aria-hidden="true" className="absolute inset-0 bg-gradient-to-t from-ink/50 via-transparent to-transparent" />
           <motion.div aria-hidden="true" style={tilt.glareStyle} className="pointer-events-none absolute inset-0 z-[2]" />
-          <div className="absolute left-4 top-4 z-[3] sm:left-5 sm:top-5">
+          <motion.div style={tilt.floatStyle} className="absolute left-4 top-4 z-[3] sm:left-5 sm:top-5">
             <StatusBadge project={project} />
-          </div>
+          </motion.div>
           {/* Duplicate link on the image, hidden from assistive tech and the tab order. */}
           <ProjectLink project={project} stretched tabIndex={-1} aria-hidden="true" className="absolute inset-0" />
         </motion.div>

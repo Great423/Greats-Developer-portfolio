@@ -1,6 +1,6 @@
 /* eslint-disable react/prop-types */
 import { motion } from "framer-motion";
-import { fadeUp } from "../../lib/motion";
+import { cardPress, fadeUp } from "../../lib/motion";
 import useTilt from "../../hooks/useTilt";
 import StatusBadge from "../ui/StatusBadge";
 import { TagList } from "../ui/Tag";
@@ -18,6 +18,7 @@ export default function ProjectCard({ project, layout = "stacked", priority = fa
   return (
     <motion.article
       variants={fadeUp}
+      {...cardPress}
       {...tilt.handlers}
       className={`group relative flex h-full flex-col ${wide ? "lg:grid lg:grid-cols-12 lg:items-center lg:gap-12" : ""}`}
     >
@@ -28,16 +29,19 @@ export default function ProjectCard({ project, layout = "stacked", priority = fa
           wide ? "lg:col-span-7" : ""
         }`}
       >
-        <ProjectMedia
-          project={project}
-          priority={priority}
-          className="transition-transform duration-[1000ms] ease-out-expo group-hover:scale-[1.045]"
-        />
+        {/* Depth: the image drifts against the tilt while the badge floats with it. */}
+        <motion.div style={tilt.mediaStyle} className="h-full w-full">
+          <ProjectMedia
+            project={project}
+            priority={priority}
+            className="transition-transform duration-[1000ms] ease-out-expo group-hover:scale-[1.06]"
+          />
+        </motion.div>
         <div aria-hidden="true" className="absolute inset-0 bg-gradient-to-t from-ink/40 via-transparent to-transparent" />
         <motion.div aria-hidden="true" style={tilt.glareStyle} className="pointer-events-none absolute inset-0 z-[2]" />
-        <div className="absolute left-4 top-4 z-[3]">
+        <motion.div style={tilt.floatStyle} className="absolute left-4 top-4 z-[3]">
           <StatusBadge project={project} />
-        </div>
+        </motion.div>
       </motion.div>
 
       <div className={`flex flex-1 flex-col pt-6 ${wide ? "lg:col-span-5 lg:pt-0" : ""}`}>

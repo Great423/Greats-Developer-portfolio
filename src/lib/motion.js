@@ -54,3 +54,12 @@ export const press = {
 };
 
 export const navSpring = { type: "spring", stiffness: 380, damping: 34 };
+
+/**
+ * Press-in for cards and large touch targets. The short delay means a touch
+ * that turns into a scroll is cancelled before anything visibly moves.
+ */
+export const cardPress = {
+  whileTap: { scale: 0.975, transition: { delay: 0.06, duration: 0.18, ease: ease.out } },
+  transition: { type: "spring", stiffness: 380, damping: 28 },
+};

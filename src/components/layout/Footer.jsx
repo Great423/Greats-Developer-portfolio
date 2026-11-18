@@ -1,14 +1,12 @@
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { FiArrowUp } from "react-icons/fi";
 import { navItems, person } from "../../data/site";
+import { scrollToTop, sectionTarget } from "../../lib/navigation";
 import SocialLinks from "../ui/SocialLinks";
 
 export default function Footer() {
   const year = new Date().getFullYear();
-  const toTop = () => {
-    const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    window.scrollTo({ top: 0, behavior: reduce ? "auto" : "smooth" });
-  };
+  const { pathname } = useLocation();
 
   return (
     <footer className="relative border-t border-white/[0.07]">
@@ -30,7 +28,7 @@ export default function Footer() {
           <ul className="mt-3 grid grid-cols-2 gap-x-8">
             {navItems.map(({ id, label }) => (
               <li key={id}>
-                <Link to={{ pathname: "/", hash: `#${id}` }} className="flex min-h-[44px] w-full items-center text-white/65 transition-colors hover:text-white">
+                <Link to={sectionTarget(id, pathname)} className="flex min-h-[44px] w-full items-center text-white/65 transition-colors hover:text-white">
                   {label}
                 </Link>
               </li>
@@ -56,7 +54,7 @@ export default function Footer() {
           </p>
           <button
             type="button"
-            onClick={toTop}
+            onClick={scrollToTop}
             className="group inline-flex min-h-[44px] items-center gap-2 self-start font-primary text-[11px] uppercase tracking-[0.16em] text-white/60 transition-colors hover:text-white sm:self-auto"
           >
             Back to top
