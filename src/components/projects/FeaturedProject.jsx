@@ -9,6 +9,7 @@ import StatusBadge from "../ui/StatusBadge";
 import { TagList } from "../ui/Tag";
 import ProjectLink from "./ProjectLink";
 import ProjectMedia from "./ProjectMedia";
+import { imageSizes } from "../../lib/images";
 
 /** Large editorial row used for the homepage's selected work. */
 export default function FeaturedProject({ project, index, reverse = false }) {
@@ -41,6 +42,7 @@ export default function FeaturedProject({ project, index, reverse = false }) {
             <motion.div style={tilt.mediaStyle} className="h-full w-full">
               <ProjectMedia
                 project={project}
+                sizes={imageSizes.featured}
                 className="transition-transform duration-[1200ms] ease-out-expo group-hover:scale-[1.035]"
               />
             </motion.div>

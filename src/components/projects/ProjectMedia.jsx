@@ -1,20 +1,22 @@
 /* eslint-disable react/prop-types */
 import { useState } from "react";
 import { FiLock } from "react-icons/fi";
+import Picture from "../ui/Picture";
 
 /**
  * Project visual. Uses the screenshot when one exists; otherwise (internal
  * systems such as Dataflex HR, which has no screenshots by design) renders a
  * typographic panel built from the project's own tags.
  */
-export default function ProjectMedia({ project, priority = false, className = "" }) {
+export default function ProjectMedia({ project, priority = false, sizes = "100vw", className = "" }) {
   const [failed, setFailed] = useState(false);
   const showImage = project.image && !failed;
 
   if (showImage) {
     return (
-      <img
+      <Picture
         src={project.image}
+        sizes={sizes}
         alt={`${project.title} website preview`}
         width="1600"
         height="1000"

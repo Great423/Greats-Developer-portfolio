@@ -21,9 +21,12 @@ const Home = lazy(loadHome);
 const Projects = lazy(loadProjects);
 const ProjectInfo = lazy(loadProjectInfo);
 
+// At least a full viewport tall: the Contact section renders after the routes
+// on every page, and a shorter placeholder left it peeking into view, only to
+// be pushed away when the page arrived (a large layout shift on every load).
 function RouteFallback() {
   return (
-    <div className="relative grid min-h-[80vh] place-items-center pt-[var(--header-h)]" role="status" aria-label="Loading">
+    <div className="relative grid min-h-screen place-items-center pt-[var(--header-h)]" role="status" aria-label="Loading">
       <Loader />
     </div>
   );
@@ -83,6 +86,7 @@ export default function App() {
   // navigating never has to wait on the network. A prefetch that fails is not
   // a problem in itself: the route reports it if the visitor goes there.
   useEffect(() => {
+    if (navigator.connection?.saveData) return undefined;
     const idle = window.requestIdleCallback || ((callback) => window.setTimeout(callback, 1200));
     const ignore = () => {};
     const handle = idle(() => {

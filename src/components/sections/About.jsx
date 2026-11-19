@@ -8,7 +8,10 @@ import Button from "../ui/Button";
 import { Reveal, RevealGroup, RevealItem } from "../ui/Reveal";
 import SectionHeading from "../ui/SectionHeading";
 import WavingHand from "../ui/WavingHand";
-import workingImage from "/assets/working.jpg";
+import Picture from "../ui/Picture";
+import { imageSizes } from "../../lib/images";
+
+const workingImage = "/assets/working.jpg";
 
 export default function About() {
   const imageRef = useRef(null);
@@ -36,8 +39,10 @@ export default function About() {
               ref={imageRef}
               className="relative aspect-[4/3] overflow-hidden rounded-[22px] border border-white/10 bg-ink-800 shadow-frame sm:aspect-[16/11] lg:aspect-[4/5]"
             >
-              <motion.img
+              <Picture
+                as={motion.img}
                 src={workingImage}
+                sizes={imageSizes.about}
                 alt="A developer workspace with code on screen"
                 width="1080"
                 height="1440"
