@@ -61,23 +61,12 @@ export default {
         "out-expo": "cubic-bezier(0.16, 1, 0.3, 1)",
       },
       keyframes: {
-        waveHand: {
-          "0%": { transform: "rotate(0deg)" },
-          "15%": { transform: "rotate(14deg)" },
-          "30%": { transform: "rotate(-8deg)" },
-          "40%": { transform: "rotate(14deg)" },
-          "50%": { transform: "rotate(-4deg)" },
-          "60%": { transform: "rotate(10deg)" },
-          "70%, 100%": { transform: "rotate(0deg)" },
-        },
         aurora: {
           "0%": { transform: "translate3d(0, 0, 0) scale(1)" },
           "100%": { transform: "translate3d(6%, 4%, 0) scale(1.08)" },
         },
       },
       animation: {
-        // The wave plays a few times on load rather than forever.
-        waveHand: "waveHand 2.5s ease-in-out 1s 2",
         aurora: "aurora 26s ease-in-out infinite alternate",
         "aurora-slow": "aurora 34s ease-in-out -10s infinite alternate-reverse",
       },

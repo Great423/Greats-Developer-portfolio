@@ -5,14 +5,14 @@
  * Writing rule: no em dashes or en dashes anywhere in this content.
  */
 export const aboutParagraphs = [
-  "I'm Onyenokwe Great Chukwuka, an Electrical & Electronics Engineering graduate (B.Eng., Federal University Otuoke) working as a frontend developer since 2022.",
+  "I'm Onyenokwe Great Chukwuka, an Electrical & Electronics Engineering graduate (B.Eng., Federal University Otuoke) working as a frontend developer since 2021.",
   "I specialise in React, Next.js and TypeScript. I've owned end-to-end frontend development across three production products in logistics, social media marketing and audio streaming. Most of that work sits where the frontend meets everything else: integrating REST APIs, structuring state for applications that outgrow their first version, building the consoles operators run a business on, and agreeing the data contract with backend engineers before either side builds against it.",
   "I've held Lead Frontend titles at Crudpen Technologies and FuelupGlobal, where I owned frontend architecture decisions, reviewed code and mentored junior developers. I'm currently the sole developer of an internal HR management platform built in Next.js, TypeScript and Supabase, covering the application, the database schema and the authorisation model.",
   "My engineering background isn't a detour from this work. I interned on gas distribution and electrical maintenance at Nigerian Gas Company (NNPC), and for my final-year project I designed and constructed a biometric fingerprint attendance system. When a product involves energy, logistics or field operations, I already understand the system the software is describing.",
 ];
 
 export const aboutFacts = [
-  { label: "Based in", value: "Effurun, Delta State, Nigeria" },
+  { label: "Based in", value: "Lekki, Lagos, Nigeria" },
   { label: "Specialism", value: "React, Next.js and TypeScript" },
   { label: "Background", value: "B.Eng. Electrical & Electronics Engineering" },
   { label: "Currently", value: "NYSC placement at Dataflex" },
