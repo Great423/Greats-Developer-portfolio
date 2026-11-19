@@ -12,6 +12,7 @@ import { Reveal } from "../components/ui/Reveal";
 import StatusBadge from "../components/ui/StatusBadge";
 import { TagList } from "../components/ui/Tag";
 import ProjectMedia from "../components/projects/ProjectMedia";
+import { imageSizes } from "../lib/images";
 
 const slugify = (text) =>
   `cs-${text
@@ -228,7 +229,7 @@ function CaseStudy({ project }) {
           className="relative mt-12 aspect-[16/10] overflow-hidden rounded-[24px] border border-white/10 bg-ink-800 shadow-frame md:mt-16"
         >
           <motion.div style={project.image ? { y: mediaY } : undefined} className={`absolute ${project.image ? "inset-[-5%]" : "inset-0"}`}>
-            <ProjectMedia project={project} priority />
+            <ProjectMedia project={project} priority sizes={imageSizes.caseStudy} />
           </motion.div>
         </motion.div>
 

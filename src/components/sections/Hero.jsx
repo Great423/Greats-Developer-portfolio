@@ -1,5 +1,5 @@
 import { Fragment, useEffect, useRef, useState } from "react";
-import { AnimatePresence, motion, useReducedMotion, useScroll, useTransform } from "framer-motion";
+import { AnimatePresence, motion, useInView, useReducedMotion, useScroll, useTransform } from "framer-motion";
 import { FiArrowRight, FiArrowUpRight, FiDownload } from "react-icons/fi";
 import { heroIntro, heroRoles, links, person, stats } from "../../data/site";
 import { ease, fadeUp, maskReveal, scaleIn, staggerContainer } from "../../lib/motion";
@@ -10,17 +10,25 @@ import SocialLinks from "../ui/SocialLinks";
 import WavingHand from "../ui/WavingHand";
 import HeroScene from "../hero/HeroScene";
 import usePointerParallax from "../../hooks/usePointerParallax";
-import portrait from "/assets/about2.png";
+import Picture from "../ui/Picture";
+import { imageSizes } from "../../lib/images";
+
+// Served from public/ (not imported) so index.html can preload it by path.
+const portrait = "/assets/about2.png";
 
 function RoleRotator() {
   const reduce = useReducedMotion();
   const [index, setIndex] = useState(0);
+  const ref = useRef(null);
+  const inView = useInView(ref);
 
+  // Rotates only while visible: off screen it would re-render and animate for
+  // nobody.
   useEffect(() => {
-    if (reduce) return undefined;
+    if (reduce || !inView) return undefined;
     const timer = setInterval(() => setIndex((value) => (value + 1) % heroRoles.length), 2800);
     return () => clearInterval(timer);
-  }, [reduce]);
+  }, [reduce, inView]);
 
   const spoken = `I am a ${heroRoles.slice(0, -1).join(", ")} and ${heroRoles.at(-1)}.`;
 
@@ -33,10 +41,20 @@ function RoleRotator() {
   }
 
   return (
-    <p className="flex flex-wrap items-baseline gap-x-2.5 font-primary text-sm uppercase tracking-[0.14em] text-white/55 md:text-[15px]">
+    <p ref={ref} className="flex flex-wrap items-baseline gap-x-2.5 font-primary text-sm uppercase tracking-[0.14em] text-white/55 md:text-[15px]">
       <span className="sr-only">{spoken}</span>
       <span aria-hidden="true">I am a</span>
-      <span aria-hidden="true" className="relative inline-flex h-[1.5em] overflow-hidden">
+      {/*
+        Every role sits invisibly in the same grid cell, so the box is always
+        as wide as the longest one. Changing roles then never rewraps the line
+        or moves the paragraph below it.
+      */}
+      <span aria-hidden="true" className="relative inline-grid h-[1.5em] overflow-hidden">
+        {heroRoles.map((role) => (
+          <span key={role} className="invisible col-start-1 row-start-1 whitespace-nowrap font-semibold">
+            {role}
+          </span>
+        ))}
         <AnimatePresence mode="wait" initial={false}>
           <motion.span
             key={heroRoles[index]}
@@ -44,7 +62,7 @@ function RoleRotator() {
             animate={{ y: "0%", opacity: 1 }}
             exit={{ y: "-100%", opacity: 0 }}
             transition={{ duration: 0.55, ease: ease.out }}
-            className="text-gradient inline-block whitespace-nowrap font-semibold"
+            className="text-gradient col-start-1 row-start-1 inline-block whitespace-nowrap font-semibold"
           >
             {heroRoles[index]}
           </motion.span>
@@ -166,11 +184,13 @@ export default function Hero() {
               <motion.div style={{ rotateX: tiltX, rotateY: tiltY, transformPerspective: 1000 }} className="absolute inset-0 z-10">
                 <div aria-hidden="true" className="absolute inset-0 rounded-full bg-brand-ring shadow-glow" />
                 <div className="absolute inset-[3px] overflow-hidden rounded-full bg-ink-850">
-                  <img
+                  <Picture
                     src={portrait}
+                    sizes={imageSizes.portrait}
                     alt={`Portrait of ${person.name}`}
                     width="1126"
                     height="1093"
+                    loading="eager"
                     decoding="async"
                     draggable="false"
                     className="h-full w-full object-cover"

@@ -7,6 +7,7 @@ import { TagList } from "../ui/Tag";
 import ProjectActions from "./ProjectActions";
 import ProjectLink from "./ProjectLink";
 import ProjectMedia from "./ProjectMedia";
+import { imageSizes } from "../../lib/images";
 
 /**
  * Catalogue card. `layout="wide"` places media and text side by side from
@@ -34,6 +35,7 @@ export default function ProjectCard({ project, layout = "stacked", priority = fa
           <ProjectMedia
             project={project}
             priority={priority}
+            sizes={wide ? imageSizes.cardWide : imageSizes.card}
             className="transition-transform duration-[1000ms] ease-out-expo group-hover:scale-[1.06]"
           />
         </motion.div>

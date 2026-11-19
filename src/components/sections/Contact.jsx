@@ -1,6 +1,5 @@
 /* eslint-disable react/prop-types */
 import { useEffect, useRef, useState } from "react";
-import emailjs from "@emailjs/browser";
 import { AnimatePresence, motion } from "framer-motion";
 import { FiCheck, FiCopy, FiLoader, FiMail, FiMapPin, FiSend } from "react-icons/fi";
 import { contactIntro, person } from "../../data/site";
@@ -47,11 +46,17 @@ export default function Contact() {
     return () => clearTimeout(timer);
   }, [status]);
 
+  const warmMailClient = () => {
+    import("@emailjs/browser").catch(() => {});
+  };
+
   const sendEmail = async (event) => {
     event.preventDefault();
     if (status === "sending") return;
     setStatus("sending");
     try {
+      // Loaded on demand: most visitors never send the form.
+      const { default: emailjs } = await import("@emailjs/browser");
       await emailjs.sendForm(EMAILJS.serviceId, EMAILJS.templateId, formRef.current, {
         publicKey: EMAILJS.publicKey,
       });
@@ -140,6 +145,9 @@ export default function Contact() {
           <form
             ref={formRef}
             onSubmit={sendEmail}
+            // Start fetching the mail client as soon as someone begins typing,
+            // so sending does not wait on it.
+            onFocus={warmMailClient}
             className="relative rounded-[24px] border border-white/10 bg-ink-850/80 p-6 shadow-frame backdrop-blur-xl sm:p-8"
           >
             <div className="grid gap-6 sm:grid-cols-2">
