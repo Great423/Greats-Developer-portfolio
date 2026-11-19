@@ -7,6 +7,7 @@ import { scaleIn } from "../../lib/motion";
 import Button from "../ui/Button";
 import { Reveal, RevealGroup, RevealItem } from "../ui/Reveal";
 import SectionHeading from "../ui/SectionHeading";
+import WavingHand from "../ui/WavingHand";
 import workingImage from "/assets/working.jpg";
 
 export default function About() {
@@ -20,7 +21,16 @@ export default function About() {
     <section id="about" aria-labelledby="about-title" className="relative py-24 md:py-28">
       <div className="container grid gap-14 lg:grid-cols-12 lg:gap-16">
         <div className="lg:col-span-5">
-          <SectionHeading index="02" label="about" title="Hi there! 👋" id="about-title" />
+          <SectionHeading
+            index="02"
+            label="about"
+            title={
+              <>
+                Hi there! <WavingHand />
+              </>
+            }
+            id="about-title"
+          />
           <Reveal variants={scaleIn} className="mt-10 lg:mt-14">
             <div
               ref={imageRef}

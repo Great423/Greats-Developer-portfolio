@@ -7,6 +7,7 @@ import AnimatedNumber from "../ui/AnimatedNumber";
 import Button from "../ui/Button";
 import { RevealGroup, RevealItem } from "../ui/Reveal";
 import SocialLinks from "../ui/SocialLinks";
+import WavingHand from "../ui/WavingHand";
 import HeroScene from "../hero/HeroScene";
 import usePointerParallax from "../../hooks/usePointerParallax";
 import portrait from "/assets/about2.png";
@@ -93,11 +94,7 @@ export default function Hero() {
             </motion.p>
 
             <motion.p variants={fadeUp} className="eyebrow mt-8 text-white/60">
-              Hello, world!{" "}
-              <span aria-hidden="true" className="inline-block origin-[70%_70%] animate-waveHand">
-                👋
-              </span>{" "}
-              I&apos;m
+              Hello, world! <WavingHand /> I&apos;m
             </motion.p>
 
             <h1 id="hero-title" className="mt-4 font-secondary text-display font-bold text-white">

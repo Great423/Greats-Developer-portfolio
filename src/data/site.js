@@ -8,7 +8,7 @@ export const person = {
   name: "Onyenokwe Great Chukwuka",
   positioning: ["Electrical & Electronics Engineer", "Lead Frontend Developer"],
   email: "chukwukaonyenokwe@gmail.com",
-  location: "Effurun, Delta State, Nigeria",
+  location: "Lekki, Lagos, Nigeria",
   remote: "Open to remote",
   availability: "Open to frontend engineering roles",
 };
@@ -40,10 +40,13 @@ export const navItems = [
 export const heroRoles = ["Frontend Engineer", "React & Next.js Developer", "Electrical Engineer"];
 
 export const heroIntro =
-  "I've owned end-to-end frontend development across three production products in logistics, social media marketing and audio streaming, and I'm the sole developer of an internal HR platform built in Next.js, TypeScript and Supabase. My focus is frontend architecture, API integration and the parts that have to work when the network doesn't.";
+  "A frontend developer since 2021. I've owned end-to-end frontend development across three production products in logistics, social media marketing and audio streaming, and I'm the sole developer of an internal HR platform built in Next.js, TypeScript and Supabase. My focus is frontend architecture, API integration and the parts that have to work when the network doesn't.";
+
+/** Frontend development started in 2021; the years stat counts from it. */
+export const frontendSince = 2021;
 
 export const stats = [
-  { value: 4, suffix: "+", label: "Years of experience" },
+  { value: new Date().getFullYear() - frontendSince, suffix: "+", label: "Years of experience" },
   { value: 3, suffix: "", label: "Production frontends" },
   { value: 50, suffix: "+", label: "Students mentored" },
 ];
