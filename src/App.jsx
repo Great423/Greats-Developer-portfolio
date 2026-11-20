@@ -3,6 +3,7 @@ import { lazy, Suspense, useCallback, useEffect, useState } from "react";
 import { BrowserRouter as Router, Route, Routes, useLocation } from "react-router-dom";
 import { AnimatePresence, MotionConfig } from "framer-motion";
 import AmbientBackground from "./components/layout/AmbientBackground";
+import AnalyticsLoader from "./components/layout/AnalyticsLoader";
 import Header from "./components/layout/Header";
 import Footer from "./components/layout/Footer";
 import PageTransition from "./components/layout/PageTransition";
@@ -114,6 +115,7 @@ export default function App() {
           <Contact />
         </main>
         <Footer />
+        <AnalyticsLoader />
       </Router>
     </MotionConfig>
   );
