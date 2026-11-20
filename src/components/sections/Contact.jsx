@@ -16,10 +16,18 @@ const EMAILJS = {
   publicKey: "9BVJWOTFoUTVqQNr-",
 };
 
-const messages = {
-  sent: "Message sent successfully!",
-  error: "Failed to send message. Please try again, or email me directly.",
-};
+const sentMessage = "Message sent successfully!";
+
+// A request that never answers would leave the button on "Sending..." for ever.
+const SEND_TIMEOUT_MS = 20000;
+
+/** A ready-to-send email holding what the visitor wrote, so a failed send loses nothing. */
+function fallbackMailto(form) {
+  const field = (name) => String(new FormData(form).get(name) || "").trim();
+  const name = field("name");
+  const body = [field("message"), "", `${name}${name ? ", " : ""}${field("email")}`].join("\n").slice(0, 1800);
+  return `mailto:${person.email}?subject=${encodeURIComponent(name ? `Message from ${name}` : "Message from your portfolio")}&body=${encodeURIComponent(body)}`;
+}
 
 const fieldClass =
   "peer w-full rounded-xl border border-white/10 bg-white/[0.03] px-4 py-3.5 text-[17px] text-white placeholder:text-white/30 transition-[border-color,background-color,box-shadow] duration-300 hover:border-white/20 focus:border-brand-pink/60 focus:bg-white/[0.05] focus:outline-none focus:ring-4 focus:ring-brand-pink/10";
@@ -38,6 +46,7 @@ function Field({ id, label, children }) {
 export default function Contact() {
   const formRef = useRef(null);
   const [status, setStatus] = useState("idle");
+  const [fallbackHref, setFallbackHref] = useState(null);
   const [copied, setCopied] = useState(false);
 
   useEffect(() => {
@@ -54,16 +63,27 @@ export default function Contact() {
     event.preventDefault();
     if (status === "sending") return;
     setStatus("sending");
+    setFallbackHref(null);
+    const form = formRef.current;
+    let timer;
     try {
       // Loaded on demand: most visitors never send the form.
       const { default: emailjs } = await import("@emailjs/browser");
-      await emailjs.sendForm(EMAILJS.serviceId, EMAILJS.templateId, formRef.current, {
-        publicKey: EMAILJS.publicKey,
+      const timeout = new Promise((_, reject) => {
+        timer = setTimeout(() => reject(new Error("The request timed out")), SEND_TIMEOUT_MS);
       });
-      formRef.current.reset();
+      await Promise.race([emailjs.sendForm(EMAILJS.serviceId, EMAILJS.templateId, form, { publicKey: EMAILJS.publicKey }), timeout]);
+      form.reset();
       setStatus("sent");
-    } catch {
+    } catch (error) {
+      // EmailJS answers a refusal with { status, text } (for example an expired
+      // mail connection, a spent quota or a disabled template). Without this the
+      // cause is invisible; with it, DevTools shows exactly what to fix.
+      console.error("[contact form] message not sent:", error?.status ?? "", error?.text ?? error?.message ?? error);
+      setFallbackHref(fallbackMailto(form));
       setStatus("error");
+    } finally {
+      clearTimeout(timer);
     }
   };
 
@@ -186,7 +206,17 @@ export default function Contact() {
                       transition={{ duration: 0.35, ease: ease.out }}
                       className={status === "sent" ? "text-brand-sky" : "text-brand-pink"}
                     >
-                      {messages[status]}
+                      {status === "sent" ? (
+                        sentMessage
+                      ) : (
+                        <>
+                          Your message could not be sent.{" "}
+                          <a href={fallbackHref} className="inline-flex min-h-[44px] items-center font-semibold text-white underline decoration-brand-pink underline-offset-4">
+                            Email it to me directly
+                          </a>{" "}
+                          <span className="text-white/60">(your text is included).</span>
+                        </>
+                      )}
                     </motion.p>
                   )}
                 </AnimatePresence>
