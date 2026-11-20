@@ -1,11 +1,15 @@
 /*
- * CV print stylesheet. Rendered to A4 PDF by scripts/build-cv.mjs.
- * Typographic identity carried over from the original CV:
- * Helvetica/Arial, 16pt name, 12pt subtitle and contact, 11pt section headings, 10pt body.
+ * CV print stylesheet. Rendered to a one page A4 PDF by scripts/build-cv.mjs.
+ * Typographic identity of the current CV: Carlito (Calibri metrics), 16pt name,
+ * 11pt subtitle, 9.5pt letter-spaced section headings with a hairline rule,
+ * 10pt role lines, 9.5pt body, 8.5pt italic meta lines.
+ *
+ * Carlito is installed with most Linux desktops (fonts-crosextra-carlito).
+ * Calibri is the first fallback, so the layout holds on Windows and macOS too.
  */
 @page {
   size: A4;
-  margin: 16mm 18mm 16mm 18mm;
+  margin: 32.8pt 50.4pt 28pt 50.4pt;
 }
 
 * {
@@ -20,10 +24,10 @@ html {
 }
 
 body {
-  font-family: Helvetica, Arial, "Liberation Sans", sans-serif;
-  font-size: 10pt;
-  line-height: 1.38;
-  color: #111;
+  font-family: Carlito, Calibri, "Liberation Sans", Arial, sans-serif;
+  font-size: 9.5pt;
+  line-height: 1.22;
+  color: #1a1a1a;
 }
 
 a {
@@ -32,71 +36,87 @@ a {
 }
 
 header {
-  margin-bottom: 10pt;
+  text-align: center;
+  margin-bottom: -1.5pt;
 }
 
 h1 {
   font-size: 16pt;
   font-weight: bold;
-  letter-spacing: 0.04em;
+  letter-spacing: 1.07pt;
 }
 
 .subtitle {
-  font-size: 12pt;
-  margin-top: 2pt;
+  font-size: 11pt;
+  margin-top: 2.1pt;
 }
 
 .contact {
-  font-size: 10pt;
-  margin-top: 4pt;
-  color: #333;
-}
-
-section {
-  margin-top: 11pt;
-}
-
-h2 {
-  font-size: 11pt;
-  font-weight: bold;
-  text-transform: uppercase;
-  letter-spacing: 0.06em;
-  border-bottom: 0.6pt solid #999;
-  padding-bottom: 2pt;
-  margin-bottom: 5pt;
-  break-after: avoid;
-}
-
-p + p {
-  margin-top: 4pt;
-}
-
-ul,
-ol {
-  padding-left: 14pt;
-}
-
-li + li {
+  font-size: 8.5pt;
+  line-height: 13.4pt;
+  color: #4a4a4a;
   margin-top: 1.5pt;
 }
 
-.role {
-  break-inside: avoid;
+h2 {
+  font-size: 9.5pt;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 1.55pt;
+  margin-top: 5.6pt;
+  padding-bottom: 3.9pt;
+  border-bottom: 0.75pt solid #bfbfbf;
 }
 
-.role + .role {
-  margin-top: 8pt;
+section > p {
+  line-height: 13.2pt;
+  margin-top: 3.45pt;
+  margin-bottom: -0.7pt;
+}
+
+ul {
+  list-style: none;
+  margin-top: 2.65pt;
+}
+
+li {
+  position: relative;
+  padding-left: 15.9pt;
+  margin-bottom: 2pt;
+  color: #1a1a1a;
+}
+
+li:last-child {
+  margin-bottom: 0;
+}
+
+/* Bullets are grey, like the secondary text. */
+li::before {
+  content: "\2022";
+  position: absolute;
+  left: 5.8pt;
+  color: #4a4a4a;
+}
+
+.role {
+  margin-top: 3.9pt;
 }
 
 .role-head {
-  font-weight: bold;
+  font-size: 10pt;
 }
 
 .role-meta {
-  font-weight: normal;
-  color: #333;
+  font-size: 8.5pt;
+  font-style: italic;
+  color: #4a4a4a;
 }
 
-.role ol {
+.role ul {
   margin-top: 3pt;
+}
+
+/* A short gap on each side of the "|" that separates name, link and detail. */
+.sep {
+  margin: 0 0.4em;
 }
