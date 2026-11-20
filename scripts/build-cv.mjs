@@ -16,7 +16,7 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const source = path.resolve(__dirname, "cv/cv.html");
 const stylesheet = path.resolve(__dirname, "cv/cv.css");
 const output = path.resolve(__dirname, "../public/Great-Onyenokwe-CV.pdf");
-const EXPECTED_PAGES = 2;
+const EXPECTED_PAGES = 1;
 
 // Writing rule for the CV: no em dashes or en dashes.
 for (const file of [source, stylesheet]) {
