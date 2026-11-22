@@ -8,7 +8,13 @@ import Button from "../ui/Button";
 import { RevealGroup, RevealItem } from "../ui/Reveal";
 import SocialLinks from "../ui/SocialLinks";
 import WavingHand from "../ui/WavingHand";
-import HeroScene from "../hero/HeroScene";
+// The explicit .jsx matters: this directory also has a same-named-but-for-case
+// heroScene.js (the 3D scene controller, no default export). Vite's default
+// extension order tries .js before .jsx, and on a case-insensitive filesystem
+// (default macOS/Windows), the extensionless specifier "HeroScene" would
+// resolve the .js candidate against heroScene.js instead of falling through
+// to HeroScene.jsx, producing "does not provide an export named 'default'".
+import HeroScene from "../hero/HeroScene.jsx";
 import usePointerParallax from "../../hooks/usePointerParallax";
 import Picture from "../ui/Picture";
 import { imageSizes } from "../../lib/images";
