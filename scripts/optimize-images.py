@@ -28,6 +28,7 @@ SOURCES = {
     "projects/crudpen.jpg": [480, 768, 1200, 1600],
     "projects/grandlife.jpg": [480, 768, 1200, 1600],
     "projects/fhapi.jpg": [480, 768, 1200, 1600],
+    "projects/campus-assist-ai.jpg": [480, 768, 1200, 1600],
 }
 
 # Screenshots carry small text, so quality stays a little above the usual

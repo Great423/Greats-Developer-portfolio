@@ -368,6 +368,72 @@ export const projects = [
     caseStudy: null,
   },
   {
+    title: "Campus Assist AI",
+    slug: "campus-assist-ai",
+    sector: "Campus assistant concept",
+    role: "Frontend Developer (Sole Developer)",
+    description:
+      "A solo side project built in 2025: an AI campus companion concept for Federal University Otuoke, with an AI assistant, a tutor directory, a study resource catalogue and simulated accounts, running entirely on fictional local data as a demo.",
+    stack: ["Next.js", "React", "TypeScript", "Tailwind CSS", "Zustand"],
+    image: "/projects/campus-assist-ai.jpg",
+    liveUrl: "https://campus-assist-ai-three.vercel.app/",
+    repoUrl: "",
+    featured: false,
+    caseStudy: {
+      sections: [
+        {
+          heading: "Context",
+          paragraphs: [
+            "Campus Assist AI is a side project I built for fun in my own time during 2025, before AI-assisted coding tools were as common as they are now. It imagines an AI companion for Federal University Otuoke (FUO) students, especially freshers, covering campus navigation, enrollment and fee guidance, an AI assistant for everyday questions, tutorial sessions and study resources. I built it solo.",
+          ],
+        },
+        {
+          heading: "The problem",
+          paragraphs: [
+            "A new student arriving at a university faces the same handful of questions every term: where a building is, how enrollment and fee payment actually work, who can help with a course, where to find reliable study material. The idea behind Campus Assist AI was to put all of that behind one assistant instead of scattered flyers, group chats and word of mouth.",
+          ],
+        },
+        {
+          heading: "What it does",
+          paragraphs: [
+            {
+              lead: "AI assistant.",
+              text: "A chat interface that answers common questions about enrollment, fees, campus life and academics. It is not a connected language model: answers are a fixed set of hand-written responses, matched to what's asked by a scored retrieval pass over a topic set, so every reply is something I wrote and checked rather than something generated live.",
+            },
+            {
+              lead: "Tutors and study resources.",
+              text: "A searchable, filterable directory of tutorial sessions by department and level, and a catalogue of study resources (lecture notes, past questions, textbooks, video lectures) with search and category filters.",
+            },
+            {
+              lead: "Accounts and roles.",
+              text: "Simulated sign-in for three account types, student, lecturer and administrator, including sign-up, password reset and a Google sign-in button, all running against a local fictional account store rather than a real identity provider.",
+            },
+            {
+              lead: "Campus navigation.",
+              text: "A planned feature, currently a \"coming soon\" placeholder rather than a working map.",
+            },
+          ],
+        },
+        {
+          heading: "A demo, not a live product",
+          paragraphs: [
+            "There is no backend, no database and no real AI provider behind this build. Every account, conversation and resource is fictional seed data held in the browser's local storage, scoped per demo account, and nothing typed into it leaves the browser. The live site's own pricing and sign-up screens describe a product vision; no payment processing or real subscription sits behind them. I built it this way deliberately so it can be explored safely without any of the risk or cost of running a real backend.",
+          ],
+        },
+        {
+          heading: "My role",
+          paragraphs: [
+            "Sole developer. I designed and built the entire frontend, the fictional data layer and the account simulation, on my own time, as a personal project rather than client or employer work.",
+          ],
+        },
+        {
+          heading: "Stack",
+          paragraphs: ["Next.js 15 (App Router) · React 19 · TypeScript · Tailwind CSS 4 · shadcn/ui · Radix UI · Zustand"],
+        },
+      ],
+    },
+  },
+  {
     title: "Grandlife Pharmaceuticals",
     slug: "grandlife",
     sector: "Company website",
