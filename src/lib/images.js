@@ -15,6 +15,7 @@ const variants = {
   "/projects/crudpen.jpg": projectWidths,
   "/projects/grandlife.jpg": projectWidths,
   "/projects/fhapi.jpg": projectWidths,
+  "/projects/campus-assist-ai.jpg": projectWidths,
 };
 
 /** `srcset` strings for each modern format, or null for an image without variants. */
