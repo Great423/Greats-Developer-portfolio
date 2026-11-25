@@ -11,7 +11,7 @@ import GeoAccent from "../ui/GeoAccent";
 
 // EmailJS identifiers are public by design (the public key is meant for the browser).
 const EMAILJS = {
-  serviceId: "service_0u3blq8",
+  serviceId: "service_lii71dl",
   templateId: "template_o39t5hp",
   publicKey: "9BVJWOTFoUTVqQNr-",
 };
